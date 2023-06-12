@@ -8,8 +8,7 @@ const seed = async (users) => {
   console.log("in seed");
   try {
     console.log("in try block");
-    /*  await connectionPool.connect(); */
-    await User.drop();
+    await User.deleteMany({});
     await User.insertMany(users);
     console.log("data inserted!!");
     connectionPool.close();
