@@ -1,10 +1,11 @@
 const { fetchUsers } = require("../models/users.models");
 
-exports.getUsers = (req, res, next) => {
-	console.log("In controller");
-	fetchUsers()
-		.then((users) => {
-			res.status(200).send({ users });
-		})
-		.catch(next);
+exports.getUsers = async (req, res, next) => {
+	try {
+		const users = await fetchUsers();
+		console.log(users, "users in getUsers");
+		res.status(200).send({ users: users });
+	} catch (err) {
+		next;
+	}
 };

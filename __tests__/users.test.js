@@ -14,8 +14,7 @@ describe("GET /api/users", () => {
 			.get("/api/users")
 			.expect(200)
 			.then((response) => {
-				// console.log(response, "res in test");
-				expect(response.body.length).toBe(10);
+				expect(response.body.users.length).toBe(10);
 				response.body.users.forEach((user) => {
 					expect(typeof user.userName).toBe("string");
 					expect(typeof user.firstName).toBe("string");

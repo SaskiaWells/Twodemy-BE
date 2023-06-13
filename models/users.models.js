@@ -1,13 +1,10 @@
-const connection = require("../db/connection.js");
-const userSchema = require("../db/seedData/schemas/userSchema.js");
+const connectionPool = require("../db/connection");
+const userSchema = require("../db/seedData/schemas/userSchema");
 
 exports.fetchUsers = async () => {
-	console.log("In model");
 	try {
-		console.log("In try block");
-		const User = connection.model("User", userSchema);
+		const User = connectionPool.model("User", userSchema);
 		const users = await User.find();
-		console.log(users, "users in model");
 		return users;
 	} catch {}
 };
