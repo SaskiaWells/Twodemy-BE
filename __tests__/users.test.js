@@ -9,21 +9,22 @@ beforeEach(() => seed(testData));
 afterAll(() => connection.close());
 
 describe("GET /api/users", () => {
-	test("Status 200 - returns an array of all user objects in the database", () => {
-		return request(app)
-			.get("/api/users")
-			.expect(200)
-			.then((response) => {
-				expect(response.body.users.length).toBe(10);
-				response.body.users.forEach((user) => {
-					expect(typeof user.userName).toBe("string");
-					expect(typeof user.firstName).toBe("string");
-					expect(typeof user.lastName).toBe("string");
-					expect(typeof user.email).toBe("string");
-					expect(typeof user.password).toBe("string");
-					expect(typeof user.profilePicture).toBe("string");
-					expect(typeof user.isTeacher).toBe("boolean");
-				});
-			});
-	});
+  test("Status 200 - returns an array of all user objects in the database", () => {
+    return request(app)
+      .get("/api/users")
+      .expect(200)
+      .then((response) => {
+        expect(response.body.users.length).toBe(10);
+        response.body.users.forEach((user) => {
+          expect(typeof user._id).toBe("string");
+          expect(typeof user.userName).toBe("string");
+          expect(typeof user.firstName).toBe("string");
+          expect(typeof user.lastName).toBe("string");
+          expect(typeof user.email).toBe("string");
+          expect(typeof user.password).toBe("string");
+          expect(typeof user.profilePicture).toBe("string");
+          expect(typeof user.isTeacher).toBe("boolean");
+        });
+      });
+  });
 });
