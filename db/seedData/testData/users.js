@@ -23,7 +23,7 @@ const users = [
     ],
     topicsToLearn: [
       {
-        subject: "Math",
+        subject: "Maths",
         proficiency: "Subpar",
       },
     ],
@@ -134,8 +134,8 @@ const users = [
     ],
     topicsToLearn: [
       {
-        subject: "coding",
-        proficiency: "beginner",
+        subject: "Maths",
+        proficiency: "Prodigy",
       },
     ],
     aboutMe: "I am a human (i think)",
