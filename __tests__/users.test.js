@@ -102,4 +102,31 @@ describe("/api/users/students", () => {
         );
       });
   });
+  test("GET Status 200 - function works dynamically with many different queries", () => {
+    return request(app)
+      .get(
+        "/api/users/students?subject=Maths&proficiency=Prodigy&firstName=Jonathan"
+      )
+      .expect(200)
+      .then((response) => {
+        expect(response.body.students.length).toBe(1);
+        expect(response.body.students[0].topicsToLearn[0].subject).toBe(
+          "Maths"
+        );
+        expect(response.body.students[0].topicsToLearn[0].proficiency).toBe(
+          "Prodigy"
+        );
+        expect(response.body.students[0].firstName).toBe("Jonathan");
+      });
+  });
+  test("GET Status 404 - correctly handles error through middleware when querys don't exist", () => {
+    return request(app)
+      .get(
+        "/api/users/students?subject=Maths&proficiency=Prodigy&username=LobotomyNow"
+      )
+      .expect(404)
+      .then((response) => {
+        expect(response.body.msg).toBe("Field does not exist");
+      });
+  });
 });
