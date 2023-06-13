@@ -28,3 +28,26 @@ describe("GET /api/users", () => {
       });
   });
 });
+
+describe("GET /api/users/students", () => {
+  test("Status 200 - returns an array of all active student objects in the database -- an active student is defined as having a topicsToLearn field", () => {
+    return request(app)
+      .get("/api/users/students")
+      .expect(200)
+      .then((response) => {
+        expect(response.body.students.length).toBe(8);
+        response.body.students.forEach((student) => {
+          expect(typeof student._id).toBe("string");
+          expect(typeof student.userName).toBe("string");
+          expect(typeof student.firstName).toBe("string");
+          expect(typeof student.lastName).toBe("string");
+          expect(typeof student.email).toBe("string");
+          expect(typeof student.password).toBe("string");
+          expect(typeof student.profilePicture).toBe("string");
+          expect(typeof student.isTeacher).toBe("boolean");
+          expect(Array.isArray(student.topicsToLearn)).toBe(true);
+          expect(student.topicsToLearn.length).toBeGreaterThan(0);
+        });
+      });
+  });
+});
