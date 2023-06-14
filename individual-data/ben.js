@@ -9,7 +9,7 @@ const userObject = {
   languages: [
     {
       language: "English",
-      proficiency: "Fluent",
+      fluency: "Fluent",
     },
   ],
   calendar: [
@@ -41,11 +41,11 @@ const teacherObject = {
   languages: [
     {
       language: "English",
-      proficiency: "Fluent",
+      fluency: "Fluent",
     },
     {
       language: "Spanish",
-      proficiency: "Que",
+      fluency: "Que",
     },
   ],
   calendar: [
@@ -96,6 +96,7 @@ const teacherObject = {
           default: () => new ObjectId(),
         },
         article_title: "Mongod Tutorial",
+        article_category: "Coding",
         article_img:
           "https://coralogix.com/wp-content/uploads/2023/03/MongoDB-1000X1000.png",
         article_body:

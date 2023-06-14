@@ -8,7 +8,7 @@ const teacherObj = {
   languages: [
     {
       language: "English",
-      proficiency: "i have spoken it my whole damn life",
+      fluency: "i have spoken it my whole damn life",
     },
   ],
   aboutMe: "this is something about me",
@@ -51,7 +51,7 @@ const studentObj = {
   languages: [
     {
       language: "Cat",
-      proficiency: "fluent",
+      fluency: "fluent",
     },
   ],
   topicsToLearn: [
