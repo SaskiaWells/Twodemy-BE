@@ -8,8 +8,8 @@ const userSchema = [
     profilePicture:
       "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
     languages: [
-      { language: "English", proficiency: "Fluent" },
-      { language: "German", proficiency: "Scheisse" },
+      { language: "English", fluency: "Fluent" },
+      { language: "German", fluency: "Scheisse" },
     ],
     calendar: [
       {
@@ -36,7 +36,7 @@ const userSchema = [
             default: () => new ObjectId(),
           },
           courseName: "advanced waffle",
-          courseCatergory: "cooking",
+          courseCategory: "cooking",
           hourlyRate: 1,
           courseImage:
             "https://media.istockphoto.com/id/185266029/photo/waffles-with-fruit-and-maple-syrup-on-a-marble-counter.jpg?s=612x612&w=0&k=20&c=YkBBzuSLisdHiECgS_NHN6gOyOMN6exADFk-RIlfKtI=",
@@ -52,6 +52,7 @@ const userSchema = [
             default: () => new ObjectId(),
           },
           article_title: "The link between Baudrillard and Torok's Phantom",
+          article_category: "Literary Theory",
           article_body:
             "Jean Baudrillard and Toroks Phantom are two distinct concepts from different domains. Jean Baudrillard was a prominent French sociologist and philosopher known for his theories on postmodernism, simulacra, and hyperreality. Toroks Phantom, on the other hand, is a theoretical construct proposed by Dr. Zoltan Torok in the field of theoretical physics.\nJean Baudrillard's ideas revolve around the notion of hyperreality, where he argues that our contemporary society is characterized by the simulation and proliferation of signs and symbols that create a simulated reality divorced from the original referents. His work explores the ways in which symbols, images, and representations shape our perception of reality and contribute to the dissolution of the boundaries between reality and illusion.\nToroks Phantom, on the other hand, is a concept within the realm of theoretical physics that extends our understanding of space-time. It proposes the existence of 'phantom space' alongside our observable space-time, suggesting the possibility of alternative dimensions or hidden aspects of the universe that are currently beyond our perception and comprehension.\nWhile both Baudrillard's ideas and Toroks Phantom touch upon the nature of reality, they approach the subject from different perspectives and disciplines. Baudrillard's focus is primarily on sociocultural aspects, examining the influence of media, technology, and symbols on our perception and construction of reality. Toroks Phantom, on the other hand, is a concept within the theoretical framework of physics, exploring possibilities beyond our current understanding of space-time.\nIt's important to note that the connection between these concepts would be speculative at best, as Baudrillard's work is grounded in social theory and philosophy, while Toroks Phantom is a theoretical construct in the realm of physics.",
           created_by: "coolBoy420",
@@ -98,9 +99,9 @@ const userSchema = [
     profilePicture:
       "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
     languages: [
-      { language: "English", proficiency: "Fluent" },
-      { language: "Spanish", proficiency: "Fluent" },
-      { language: "Esperanto", proficiency: "Native" },
+      { language: "English", fluency: "Fluent" },
+      { language: "Spanish", fluency: "Fluent" },
+      { language: "Esperanto", fluency: "Native" },
     ],
     calendar: [
       {

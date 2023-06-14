@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   languages: [
     {
       language: { type: String, required: true },
-      proficiency: { type: String, required: true },
+      fluency: { type: String, required: true },
     },
   ],
   calendar: [
@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema({
           default: () => new ObjectId(),
         },
         courseName: { type: String },
-        courseCatergory: { type: String },
+        courseCategory: { type: String },
         hourlyRate: { type: Number },
         courseImage: { type: String },
         rating: { type: Number },
@@ -56,6 +56,7 @@ const userSchema = new mongoose.Schema({
           default: () => new ObjectId(),
         },
         article_title: { type: String },
+        article_category: { type: String },
         article_img: {
           type: String,
           default:
