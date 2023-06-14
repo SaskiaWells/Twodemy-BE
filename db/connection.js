@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
-require("dotenv").config({ path: `${__dirname}/../.env.test` });
+const ENV = process.env.NODE_ENV || "test";
+require("dotenv").config({ path: `${__dirname}/../.env.${ENV}` });
 
 const connectionPool = mongoose.createConnection(process.env.MONGODB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
 });
 
 module.exports = connectionPool;
