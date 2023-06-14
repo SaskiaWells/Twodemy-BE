@@ -132,7 +132,7 @@ describe("/api/users/students", () => {
 });
 
 describe("/api/users/teachers", () => {
-  test("GET Status 200 - returns an array of all active student objects in the database -- an active student is defined as having a topicsToLearn field", () => {
+  test("GET Status 200 - returns an array of all active teacher objects in the database -- an active teacher is defined as by isTeacher: true", () => {
     return request(app)
       .get("/api/users/teachers")
       .expect(200)
