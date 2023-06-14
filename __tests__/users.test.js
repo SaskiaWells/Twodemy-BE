@@ -130,3 +130,95 @@ describe("/api/users/students", () => {
       });
   });
 });
+
+describe("/api/users/teachers", () => {
+  test("GET Status 200 - returns an array of all active student objects in the database -- an active student is defined as having a topicsToLearn field", () => {
+    return request(app)
+      .get("/api/users/teachers")
+      .expect(200)
+      .then((response) => {
+        expect(response.body.teachers.length).toBe(5);
+        response.body.teachers.forEach((teacher) => {
+          expect(typeof teacher._id).toBe("string");
+          expect(typeof teacher.userName).toBe("string");
+          expect(typeof teacher.firstName).toBe("string");
+          expect(typeof teacher.lastName).toBe("string");
+          expect(typeof teacher.email).toBe("string");
+          expect(typeof teacher.password).toBe("string");
+          expect(typeof teacher.profilePicture).toBe("string");
+          expect(typeof teacher.isTeacher).toBe("boolean");
+          expect(teacher.isTeacher).toBe(true);
+          expect(Array.isArray(teacher.topicsToLearn)).toBe(true);
+          expect(Array.isArray(teacher.teacher.courses)).toBe(true);
+          expect(Array.isArray(teacher.teacher.articles)).toBe(true);
+          expect(Array.isArray(teacher.teacher.reviews)).toBe(true);
+          expect(typeof teacher.teacher.rating).toBe("number");
+          expect(typeof teacher.teacher.qualifications).toBe("string");
+          expect(typeof teacher.teacher.website).toBe("string");
+        });
+      });
+  });
+
+  test("GET Status 200 - QUERY course:cooking - returns an array of teachers who run that course", () => {
+    return request(app)
+      .get("/api/users/teachers?course=cooking")
+      .expect(200)
+      .then((response) => {
+        expect(response.body.teachers.length).toBe(2);
+        expect(response.body.teachers[0].teacher.courses[0]).toEqual(
+          expect.objectContaining({ courseCategory: "cooking" })
+        );
+        expect(response.body.teachers[1].teacher.courses[0]).toEqual(
+          expect.objectContaining({ courseCategory: "cooking" })
+        );
+      });
+  });
+
+  test("GET Status 200 - QUERY course:cooking, languages:German - returns an array of teachers who fulfill criteria", () => {
+    return request(app)
+      .get("/api/users/teachers?course=cooking&languages=German")
+      .expect(200)
+      .then((response) => {
+        expect(response.body.teachers.length).toBe(1);
+        expect(response.body.teachers[0].teacher.courses[0]).toEqual(
+          expect.objectContaining({ courseCategory: "cooking" })
+        );
+        expect(response.body.teachers[0].languages[1]).toEqual(
+          expect.objectContaining({ language: "German" })
+        );
+      });
+  });
+  test("GET Status 200 - function works dynamically with many different queries", () => {
+    return request(app)
+      .get(
+        "/api/users/teachers?subject=Maths&proficiency=Prodigy&firstName=Jonathan&languages=German&course=cooking"
+      )
+      .expect(200)
+      .then((response) => {
+        expect(response.body.teachers.length).toBe(1);
+        expect(response.body.teachers[0].topicsToLearn[0].subject).toBe(
+          "Maths"
+        );
+        expect(response.body.teachers[0].topicsToLearn[0].proficiency).toBe(
+          "Prodigy"
+        );
+        expect(response.body.teachers[0].firstName).toBe("Jonathan");
+        expect(response.body.teachers[0].teacher.courses[0]).toEqual(
+          expect.objectContaining({ courseCategory: "cooking" })
+        );
+        expect(response.body.teachers[0].languages[1]).toEqual(
+          expect.objectContaining({ language: "German" })
+        );
+      });
+  });
+  test("GET Status 404 - correctly handles error through middleware when querys don't exist", () => {
+    return request(app)
+      .get(
+        "/api/users/teachers?subject=Maths&proficiency=Prodigy&firstName=Jonathan&languages=German&course=cooking&qualifications=degree"
+      )
+      .expect(404)
+      .then((response) => {
+        expect(response.body.msg).toBe("Field does not exist");
+      });
+  });
+});
