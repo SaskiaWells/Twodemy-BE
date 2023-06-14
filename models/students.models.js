@@ -24,10 +24,8 @@ exports.fetchStudents = async (queries) => {
     }
   }
 
-  try {
-    const User = connectionPool.model("User", userSchema);
-    await checkFieldExists("User", query);
-    const students = await User.find(query);
-    return students;
-  } catch {}
+  const User = connectionPool.model("User", userSchema);
+  await checkFieldExists("User", query);
+  const students = await User.find(query);
+  return students;
 };
