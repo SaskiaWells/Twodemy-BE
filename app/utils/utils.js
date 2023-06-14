@@ -35,3 +35,23 @@ exports.buildQuery = (queries) => {
 
   return query;
 };
+
+exports.handleSort = (queries) => {
+  const { sortBy, order } = queries;
+
+  const sortLookup = {
+    rating: "teacher.rating",
+    name: "firstName",
+    surname: "lastName",
+  };
+
+  let sortOptions = {};
+
+  if (sortBy && sortLookup[sortBy]) {
+    sortOptions[sortLookup[sortBy]] = order === "asc" ? 1 : -1;
+  } else {
+    sortOptions["_id"] = -1;
+  }
+
+  return sortOptions;
+};

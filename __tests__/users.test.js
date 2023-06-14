@@ -211,6 +211,38 @@ describe("/api/users/teachers", () => {
         );
       });
   });
+
+  test("sorts teachers by rating and defaults to descending", () => {
+    return request(app)
+      .get("/api/users/teachers?sortBy=rating")
+      .expect(200)
+      .then((res) => {
+        const ratingArr = res.body.teachers.map(
+          (teacher) => teacher.teacher.rating
+        );
+
+        expect(ratingArr).toBeSorted({
+          descending: true,
+        });
+      });
+  });
+
+  test("sorts teachers by rating and works with ascending", () => {
+    return request(app)
+      .get("/api/users/teachers?sortBy=rating&order=asc")
+      .expect(200)
+      .then((res) => {
+        const ratingArr = res.body.teachers.map(
+          (teacher) => teacher.teacher.rating
+        );
+        console.log(ratingArr);
+
+        expect(ratingArr).toBeSorted({
+          descending: false,
+        });
+      });
+  });
+
   test("GET Status 404 - correctly handles error through middleware when querys don't exist", () => {
     return request(app)
       .get(
