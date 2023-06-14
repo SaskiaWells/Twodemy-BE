@@ -6,6 +6,7 @@ exports.fetchTeachers = async (queries) => {
   let query = {
     isTeacher: true,
   };
+
   query = Object.assign(query, buildQuery(queries));
 
   const User = connectionPool.model("User", userSchema);
