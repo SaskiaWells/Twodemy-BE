@@ -58,7 +58,7 @@ const teacherCadenObject = {
     courses: [
       {
         courseName: "survive outside",
-        courseCatergory: "cooking",
+        courseCategory: "cooking",
         hourlyRate: 10,
         courseImage:
           "https://cdn.shopify.com/s/files/1/1583/5739/files/blog-hunter_large.jpg?v=1483641733",

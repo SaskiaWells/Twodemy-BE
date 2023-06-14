@@ -75,7 +75,7 @@ const users = [
       courses: [
         {
           courseName: "How to be a Mongod",
-          courseCatergory: "Coding",
+          courseCategory: "Coding",
           hourlyRate: 50,
           courseImage:
             "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
@@ -144,7 +144,7 @@ const users = [
       courses: [
         {
           courseName: "advanced waffle",
-          courseCatergory: "cooking",
+          courseCategory: "cooking",
           hourlyRate: 1,
           courseImage:
             "https://media.istockphoto.com/id/185266029/photo/waffles-with-fruit-and-maple-syrup-on-a-marble-counter.jpg?s=612x612&w=0&k=20&c=YkBBzuSLisdHiECgS_NHN6gOyOMN6exADFk-RIlfKtI=",
@@ -266,7 +266,7 @@ const users = [
       courses: [
         {
           courseName: "survive outside",
-          courseCatergory: "cooking",
+          courseCategory: "cooking",
           hourlyRate: 10,
           courseImage:
             "https://cdn.shopify.com/s/files/1/1583/5739/files/blog-hunter_large.jpg?v=1483641733",
@@ -399,7 +399,7 @@ const users = [
       courses: [
         {
           courseName: "How to be Saskia 101",
-          courseCatergory: "lifestyle",
+          courseCategory: "lifestyle",
           hourlyRate: 100,
           courseImage:
             "https://media.newyorker.com/photos/590968866552fa0be682f3d7/master/w_2560%2Cc_limit/110627_r21011_g2048.jpg",

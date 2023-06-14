@@ -36,7 +36,7 @@ const userSchema = [
             default: () => new ObjectId(),
           },
           courseName: "advanced waffle",
-          courseCatergory: "cooking",
+          courseCategory: "cooking",
           hourlyRate: 1,
           courseImage:
             "https://media.istockphoto.com/id/185266029/photo/waffles-with-fruit-and-maple-syrup-on-a-marble-counter.jpg?s=612x612&w=0&k=20&c=YkBBzuSLisdHiECgS_NHN6gOyOMN6exADFk-RIlfKtI=",

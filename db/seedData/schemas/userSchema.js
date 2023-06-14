@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema({
           default: () => new ObjectId(),
         },
         courseName: { type: String },
-        courseCatergory: { type: String },
+        courseCategory: { type: String },
         hourlyRate: { type: Number },
         courseImage: { type: String },
         rating: { type: Number },
