@@ -1,0 +1,48 @@
+{
+	"GET /api": {
+		"description": "serves up a json representation of all the available endpoints of the api"
+	},
+	"GET /api/users": {
+		"description": "serves an array of all user objects",
+		"queries": [],
+		"exampleResponse": {
+			"userName": "I_teach_cool_things",
+			"firstName": "Saskia",
+			"lastName": "Wells",
+			"email": "emailemail@gmail.com",
+			"password": "securePassword",
+			"profilePicture": "https://m.media-amazon.com/images/I/71YElaLt6lL.jpg",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "I have spoken it my whole damn life"
+				}
+			],
+			"aboutMe": "this is something about me",
+			"isTeacher": true,
+			"teacher": {
+				"isPremium": true,
+				"courses": [
+					{
+						"courseName": "How to be Saskia 101",
+						"courseCategory": "lifestyle",
+						"hourlyRate": 100,
+						"courseImage": "https://media.newyorker.com/photos/590968866552fa0be682f3d7/master/w_2560%2Cc_limit/110627_r21011_g2048.jpg",
+						"rating": 0,
+						"description": "If you are unfortunate enough to read this article I commend you"
+					}
+				],
+				"rating": 4,
+				"qualifications": "some",
+				"website": "www.teacher.com",
+				"reviews": [
+					{
+						"createdBy": "im_not_like_other_students",
+						"rating": 0,
+						"body": "Didn't get enough armpit scratches"
+					}
+				]
+			}
+		}
+	}
+}
