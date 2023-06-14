@@ -1,0 +1,126 @@
+{
+	"GET /api": {
+		"description": "serves up a json representation of all the available endpoints of the api"
+	},
+
+	"GET /api/users": {
+		"description": "serves an array of objects for all users",
+		"queries": [],
+		"exampleResponse": {
+			"_id": "an_ID",
+			"userName": "I_teach_cool_things",
+			"firstName": "Saskia",
+			"lastName": "Wells",
+			"email": "emailemail@gmail.com",
+			"password": "securePassword",
+			"profilePicture": "https://m.media-amazon.com/images/I/71YElaLt6lL.jpg",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "I have spoken it my whole damn life"
+				}
+			],
+			"aboutMe": "this is something about me",
+			"isTeacher": true,
+			"teacher": {
+				"isPremium": true,
+				"courses": [
+					{
+						"courseName": "How to be Saskia 101",
+						"courseCategory": "lifestyle",
+						"hourlyRate": 100,
+						"courseImage": "https://media.newyorker.com/photos/590968866552fa0be682f3d7/master/w_2560%2Cc_limit/110627_r21011_g2048.jpg",
+						"rating": 0,
+						"description": "If you are unfortunate enough to read this article I commend you"
+					}
+				],
+				"rating": 4,
+				"qualifications": "some",
+				"website": "www.teacher.com",
+				"reviews": [
+					{
+						"createdBy": "im_not_like_other_students",
+						"rating": 0,
+						"body": "Didn't get enough armpit scratches"
+					}
+				]
+			}
+		}
+	},
+
+	"GET /api/users/students": {
+		"description": "serves an array of objects for all users who have listed topicsToLearn - i.e. active students",
+		"queries": [],
+		"exampleResponse": {
+			"_id": "an_ID",
+			"userName": "LobotomyNow!",
+			"firstName": "Julius",
+			"lastName": "Apple",
+			"email": "email1@email.com",
+			"password": "Password1",
+			"profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+			"languages": [
+				{ "language": "English", "fluency": "Fluent" },
+				{ "language": "Spanish", "fluency": "Fluent" },
+				{ "language": "Esperanto", "fluency": "Native" }
+			],
+			"calendar": [
+				{
+					"id": 1323232,
+					"text": "Apocalypse",
+					"start": "2023-10-01T11:30:00",
+					"end": "2023-10-01T14:30:00"
+				}
+			],
+			"topicsToLearn": [
+				{
+					"subject": "cooking",
+					"proficiency": "advanced"
+				}
+			]
+		}
+	},
+
+	"POST /api/users/students": {
+		"description": "Allows a new user to be created with student-level privelages",
+		"examplePostBody": {
+			"userName": "newUser",
+			"firstName": "Dave",
+			"lastName": "jones",
+			"email": "example@email.com",
+			"password": "examplePassword",
+			"profilePicture": "https://url.com/example-picture.jpg",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent"
+				}
+			]
+		},
+		"exampleResponse": {
+			"_id": "an_ID",
+			"userName": "newUser",
+			"firstName": "Dave",
+			"lastName": "jones",
+			"email": "example@email.com",
+			"password": "examplePassword",
+			"profilePicture": "https://url.com/example-picture.jpg",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent"
+				}
+			],
+			"aboutMe": "",
+			"isTeacher": false,
+			"teacher": {
+				"isPremium": true,
+				"courses": [],
+				"articles": [],
+				"reviews": []
+			},
+			"calendar": [],
+			"topicsToLearn": []
+		}
+	}
+}
