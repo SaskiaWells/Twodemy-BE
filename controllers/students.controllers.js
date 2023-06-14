@@ -13,7 +13,10 @@ exports.getStudents = async (req, res, next) => {
 
 exports.postStudent = async (req, res, next) => {
   const body = req.body;
-
-  newStudent = await createStudent(body);
-  res.status(201).send({ newStudent });
+  try {
+    newStudent = await createStudent(body);
+    res.status(201).send({ newStudent });
+  } catch (err) {
+    next(err);
+  }
 };

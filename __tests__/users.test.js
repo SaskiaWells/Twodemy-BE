@@ -165,4 +165,55 @@ describe("/api/users/students", () => {
         expect(typeof newStudent._id).toBe("string");
       });
   });
+  test("POST - status: 404 - return err msg when missing an reqired field", () => {
+    return request(app)
+      .post("/api/users/students")
+      .expect(404)
+      .send({
+        // userName: "Fion666",
+        firstName: "Karlie",
+        lastName: "Guan",
+        email: "noobiefion@gmail.com",
+        password: "iamnotNoobie!",
+        profilePicture:
+          "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr",
+        languages: [
+          {
+            language: "English",
+            fluency: "Fluent",
+          },
+        ],
+      })
+      .then((response) => {
+        const body = response.body;
+        expect(body).toEqual({ msg: "Missing required field(s): userName" });
+      });
+  });
+  test("POST - status: 404 - return err msg when missing multiple reqired field", () => {
+    return request(app)
+      .post("/api/users/students")
+      .expect(404)
+      .send({
+        // userName: "Fion666",
+        // firstName: "Karlie",
+        // lastName: "Guan",
+        email: "noobiefion@gmail.com",
+        password: "iamnotNoobie!",
+        profilePicture:
+          "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr",
+        languages: [
+          {
+            language: "English",
+            fluency: "Fluent",
+          },
+        ],
+      })
+      .then((response) => {
+        const body = response.body;
+        console.log(response.body);
+        expect(body).toEqual({
+          msg: "Missing required field(s): userName, firstName, lastName",
+        });
+      });
+  });
 });
