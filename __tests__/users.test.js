@@ -129,4 +129,40 @@ describe("/api/users/students", () => {
         expect(response.body.msg).toBe("Field does not exist");
       });
   });
+  test("POST - status: 201 - adds a new student and responds with newly created student", () => {
+    return request(app)
+      .post("/api/users/students")
+      .expect(201)
+      .send({
+        userName: "Fion666",
+        firstName: "Karlie",
+        lastName: "Guan",
+        email: "noobiefion@gmail.com",
+        password: "iamnotNoobie!",
+        profilePicture:
+          "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr",
+        languages: [
+          {
+            language: "English",
+            fluency: "Fluent",
+          },
+        ],
+      })
+      .then((response) => {
+        const { newStudent } = response.body;
+        expect(newStudent.userName).toBe("Fion666");
+        expect(newStudent.firstName).toBe("Karlie");
+        expect(newStudent.lastName).toBe("Guan");
+        expect(newStudent.email).toBe("noobiefion@gmail.com");
+        expect(newStudent.password).toBe("iamnotNoobie!");
+        expect(newStudent.profilePicture).toBe(
+          "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr"
+        );
+        expect(newStudent.languages[0].language).toBe("English");
+        expect(newStudent.languages[0].fluency).toBe("Fluent");
+        expect(newStudent.topicsToLearn).toEqual([]);
+        expect(newStudent.isTeacher).toBe(false);
+        expect(typeof newStudent._id).toBe("string");
+      });
+  });
 });

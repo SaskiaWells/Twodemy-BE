@@ -29,3 +29,10 @@ exports.fetchStudents = async (queries) => {
   const students = await User.find(query);
   return students;
 };
+
+exports.createStudent = async (student) => {
+  const User = connectionPool.model("User", userSchema);
+  const newStudent = new User(student);
+  await newStudent.save();
+  return newStudent;
+};

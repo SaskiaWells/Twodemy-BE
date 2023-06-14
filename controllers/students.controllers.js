@@ -1,4 +1,4 @@
-const { fetchStudents } = require("../models/students.models");
+const { fetchStudents, createStudent } = require("../models/students.models");
 
 exports.getStudents = async (req, res, next) => {
   const queries = req.query;
@@ -9,4 +9,11 @@ exports.getStudents = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+exports.postStudent = async (req, res, next) => {
+  const body = req.body;
+
+  newStudent = await createStudent(body);
+  res.status(201).send({ newStudent });
 };
