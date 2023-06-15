@@ -379,11 +379,12 @@ describe("/api/users/students/:_id", () => {
 });
 
 describe("/api/users/teachers/:_id", () => {
-	test("GET Status 200 - returns a teacher object whose ID matches the passed :_id parameter", () => {
+	test.only("GET Status 200 - returns a teacher object whose ID matches the passed :_id parameter", () => {
 		return request(app)
 			.get("/api/users/teachers/648ac42475c58ca8fbe8b6db")
 			.expect(200)
 			.then((response) => {
+				console.log(response.body);
 				expect(Object.keys(response.body).length).toBe(1);
 				const teacher = response.body.teacher;
 				expect(typeof teacher._id).toBe("string");

@@ -173,17 +173,64 @@
 		"description": "serves an array of objects for all articles",
 		"queries": [],
 		"exampleResponse": {
-          "article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
-          "article_category": "Quantum Physics",
-          "article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
-          "article_body": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
-          "created_by": "CadenGG",
-          "comments": [],
-          "_id": "648b09600ce7f912deb6c506",
-          "created_at": "2023-06-15T12:51:44.348Z",
-          "votes": [],
-          "article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
-        }
+			"article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
+			"article_category": "Quantum Physics",
+			"article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
+			"article_body": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
+			"created_by": "CadenGG",
+			"comments": [],
+			"_id": "648b09600ce7f912deb6c506",
+			"created_at": "2023-06-15T12:51:44.348Z",
+			"votes": [],
+			"article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
+		}
+	},
 
+	"GET /api/users/teachers/:_id": {
+		"description": "returns the teacher user object matching the given ID parameter",
+		"queries": [],
+		"exampleResponse": {
+			"teacher": {
+				"isPremium": true,
+				"courses": ["Array of courses"],
+				"articles": ["Array of articles"],
+				"rating": 5,
+				"qualifications": "All the Quals",
+				"website": "www.iamgoogle.com",
+				"reviews": ["Array of reviews"]
+			},
+			"_id": "648ac42475c58ca8fbe8b6db",
+			"userName": "MrTeacher",
+			"firstName": "Margin",
+			"lastName": "Bottom",
+			"email": "imateachersemail@gmail.com",
+			"password": "ThIsIsApAsSwOrD",
+			"profilePicture": "https://jappliedecologyblog.files.wordpress.com/2022/01/picture2-2.jpg?w=1200",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent",
+					"_id": "648ac42475c58ca8fbe8b6dc"
+				}
+			],
+			"calendar": [
+				{
+					"id": "1.5995587458852127e+33",
+					"text": "Graduation",
+					"start": "2023-06-13T11:30:00",
+					"end": "2023-06-13T14:30:00",
+					"_id": "648ac42475c58ca8fbe8b6de"
+				}
+			],
+			"topicsToLearn": [
+				{
+					"subject": "I know everything",
+					"proficiency": "Mongod",
+					"_id": "648ac42475c58ca8fbe8b6e0"
+				}
+			],
+			"aboutMe": "Know it all",
+			"isTeacher": true
+		}
 	}
 }

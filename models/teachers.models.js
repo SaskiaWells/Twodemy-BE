@@ -28,7 +28,6 @@ exports.fetchTeacherById = async (params) => {
 	const User = connectionPool.model("User", userSchema);
 	await checkFieldExists("User", query);
 	const teacher = await User.findById(params._id);
-	console.log(teacher);
 	if (teacher) {
 		return teacher;
 	} else {
