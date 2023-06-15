@@ -124,6 +124,51 @@
 		}
 	},
 
+	"GET /api/users/students/:_id": {
+		"description": "returns the student user object matching the given ID parameter",
+		"queries": [],
+		"exampleResponse": {
+			"teacher": {
+				"isPremium": false,
+				"courses": [],
+				"articles": [],
+				"reviews": []
+			},
+			"_id": "648ac42475c58ca8fbe8b6d7",
+			"userName": "BenjiSmith1990",
+			"firstName": "Ben",
+			"lastName": "Smith",
+			"email": "thisisanemailaddress@gmail.com",
+			"password": "MyPaSwOrD!",
+			"profilePicture": "https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/turtle-2815539-1280_ver_1.png",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent",
+					"_id": "648af3fb747626772368f901"
+				}
+			],
+			"calendar": [
+				{
+					"id": 1.5995587458852127e33,
+					"text": "Graduation",
+					"start": "2023-06-13T11:30:00",
+					"end": "2023-06-13T14:30:00",
+					"_id": "648af3fb747626772368f902"
+				}
+			],
+			"topicsToLearn": [
+				{
+					"subject": "Maths",
+					"proficiency": "Subpar",
+					"_id": "648af3fb747626772368f903"
+				}
+			],
+			"aboutMe": "Loveable goofball",
+			"isTeacher": false
+		}
+	},
+
 	"GET /api/users/articles": {
 		"description": "serves an array of objects for all articles",
 		"queries": [],
