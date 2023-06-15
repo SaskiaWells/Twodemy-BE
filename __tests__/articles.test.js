@@ -14,7 +14,6 @@ describe("/api/articles", () => {
       .get("/api/users/articles")
       .expect(200)
         .then((response) => {
-            console.log(response.body)
         expect(response.body.articles.length).toBe(4);
             response.body.articles.forEach((article) => {
           expect(typeof article._id).toBe("string");
