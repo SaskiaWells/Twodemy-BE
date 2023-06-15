@@ -27,6 +27,7 @@ exports.buildQuery = (queries) => {
     cost: "teacher.courses.hourlyRate",
     courseRating: "teacher.courses.rating",
     discount: "teacher.courses.discountMultiplier",
+    article_category: "teacher.articles.article_category",
   };
 
   for (const key of Object.keys(queries)) {
