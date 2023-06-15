@@ -1,6 +1,6 @@
-const { checkFieldExists, buildQuery } = require("../app/utils/utils");
-const connectionPool = require("../db/connection");
-const userSchema = require("../db/seedData/schemas/userSchema");
+const { checkFieldExists, buildQuery } = require("../../app/utils/utils");
+const connectionPool = require("../../db/connection");
+const userSchema = require("../../db/seedData/schemas/userSchema");
 
 exports.fetchStudents = async (queries) => {
   let query = {

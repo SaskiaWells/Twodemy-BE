@@ -12,6 +12,7 @@ exports.checkFieldExists = async (modelName, query) => {
 };
 
 exports.buildQuery = (queries) => {
+  const query = {};
   const queryLookup = {
     subject: "topicsToLearn.subject",
     proficiency: "topicsToLearn.proficiency",
@@ -23,13 +24,22 @@ exports.buildQuery = (queries) => {
     surname: "lastName",
     premium: "isPremium",
     course: "teacher.courses.courseCategory",
+    cost: "teacher.courses.hourlyRate",
+    courseRating: "teacher.courses.rating",
   };
-
-  const query = {};
 
   for (const key of Object.keys(queries)) {
     if (queryLookup[key]) {
-      query[queryLookup[key]] = queries[key];
+      const value = queries[key];
+      if (!isNaN(value)) {
+        query[queryLookup[key]] = Number(value);
+      } else if (value.startsWith("<")) {
+        query[queryLookup[key]] = { $lt: Number(value.substring(1)) };
+      } else if (value.startsWith(">")) {
+        query[queryLookup[key]] = { $gt: Number(value.substring(1)) };
+      } else {
+        query[queryLookup[key]] = value;
+      }
     }
   }
 

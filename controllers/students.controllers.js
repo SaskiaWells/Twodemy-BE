@@ -1,4 +1,7 @@
-const { fetchStudents, createStudent } = require("../models/students.models");
+const {
+  fetchStudents,
+  createStudent,
+} = require("../models/teachers/students.models");
 
 exports.getStudents = async (req, res, next) => {
   const queries = req.query;
