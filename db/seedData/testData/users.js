@@ -86,7 +86,7 @@ const users = [
       articles: [
         {
           article_title: "Mongod Tutorial",
-          article_category: "Coding",
+          article_category: "cooking",
           article_img:
             "https://coralogix.com/wp-content/uploads/2023/03/MongoDB-1000X1000.png",
           article_body:
