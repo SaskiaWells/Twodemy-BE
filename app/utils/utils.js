@@ -26,6 +26,7 @@ exports.buildQuery = (queries) => {
     course: "teacher.courses.courseCategory",
     cost: "teacher.courses.hourlyRate",
     courseRating: "teacher.courses.rating",
+    discount: "teacher.courses.discountMultiplier",
   };
 
   for (const key of Object.keys(queries)) {
@@ -53,6 +54,9 @@ exports.handleSort = (queries) => {
     rating: "teacher.rating",
     name: "firstName",
     surname: "lastName",
+    courseRating: "teacher.courses.rating",
+    cost: "teacher.courses.hourlyRate",
+    discount: "teacher.courses.discountMultiplier",
   };
 
   let sortOptions = {};

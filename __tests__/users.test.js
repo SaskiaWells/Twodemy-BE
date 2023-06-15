@@ -210,7 +210,6 @@ describe("/api/users/students", () => {
       })
       .then((response) => {
         const body = response.body;
-        console.log(response.body);
         expect(body).toEqual({
           msg: "Missing required field(s): userName, firstName, lastName",
         });
@@ -322,7 +321,6 @@ describe("/api/users/teachers", () => {
         const ratingArr = res.body.teachers.map(
           (teacher) => teacher.teacher.rating
         );
-        console.log(ratingArr);
 
         expect(ratingArr).toBeSorted({
           descending: false,

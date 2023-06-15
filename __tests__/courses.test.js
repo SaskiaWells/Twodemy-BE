@@ -27,7 +27,7 @@ describe("/api/users/courses", () => {
         });
       });
   });
-  test("GET Status 200 - QUERY catergory:cooking - courses with that category", () => {
+  test("GET Status 200 - QUERY category:cooking - courses with that category", () => {
     return request(app)
       .get("/api/users/courses?course=cooking")
       .expect(200)
@@ -70,46 +70,48 @@ describe("/api/users/courses", () => {
         expect(response.body.courses[0].rating).toBe(5);
       });
   });
-  /*
-    test("sorts teachers by rating and defaults to descending", () => {
-      return request(app)
-        .get("/api/users/teachers?sortBy=rating")
-        .expect(200)
-        .then((res) => {
-          const ratingArr = res.body.teachers.map(
-            (teacher) => teacher.teacher.rating
-          );
-  
-          expect(ratingArr).toBeSorted({
-            descending: true,
-          });
+  test("GET Status 200 - function will get range of less than ratings if specified", () => {
+    return request(app)
+      .get("/api/users/courses?courseRating=<5")
+      .expect(200)
+      .then((response) => {
+        expect(response.body.courses.length).toBe(3);
+      });
+  });
+  test("GET Status 200 - if courseList:true then function will provide a list of distinct courses", () => {
+    return request(app)
+      .get("/api/users/courses?courseList=true")
+      .expect(200)
+      .then((response) => {
+        expect(response.body.courses.length).toBe(3);
+        expect(response.body.courses).toEqual([
+          "Coding",
+          "cooking",
+          "lifestyle",
+        ]);
+      });
+  });
+  test("sorts courses by rating and defaults to descending", () => {
+    return request(app)
+      .get("/api/users/courses?sortBy=courseRating")
+      .expect(200)
+      .then((res) => {
+        const ratingArr = res.body.courses.map((course) => course.rating);
+
+        expect(ratingArr).toBeSorted({
+          descending: true,
         });
-    });
-  
-    test("sorts teachers by rating and works with ascending", () => {
-      return request(app)
-        .get("/api/users/teachers?sortBy=rating&order=asc")
-        .expect(200)
-        .then((res) => {
-          const ratingArr = res.body.teachers.map(
-            (teacher) => teacher.teacher.rating
-          );
-          console.log(ratingArr);
-  
-          expect(ratingArr).toBeSorted({
-            descending: false,
-          });
+      });
+  });
+  test("sorts courses by cost and works with ascending", () => {
+    return request(app)
+      .get("/api/users/courses?sortBy=courseRating&order=asc")
+      .expect(200)
+      .then((res) => {
+        const ratingArr = res.body.courses.map((course) => course.rating);
+        expect(ratingArr).toBeSorted({
+          descending: false,
         });
-    });
-  
-    test("GET Status 404 - correctly handles error through middleware when querys don't exist", () => {
-      return request(app)
-        .get(
-          "/api/users/teachers?subject=Maths&proficiency=Prodigy&firstName=Jonathan&languages=German&course=cooking&qualifications=degree"
-        )
-        .expect(404)
-        .then((response) => {
-          expect(response.body.msg).toBe("Field does not exist");
-        });
-    }); */
+      });
+  });
 });

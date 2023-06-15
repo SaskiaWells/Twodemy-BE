@@ -1,7 +1,6 @@
 const { fetchCourses } = require("../models/courses.models");
 
 exports.getCourses = async (req, res, next) => {
-  console.log("inController");
   const queries = req.query;
 
   try {
