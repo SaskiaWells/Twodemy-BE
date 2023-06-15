@@ -1,6 +1,9 @@
 const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
+
+
+
 const userSchema = new mongoose.Schema({
 	userName: { type: String, required: true },
 	firstName: { type: String, required: true },
@@ -53,7 +56,8 @@ const userSchema = new mongoose.Schema({
 						"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
 				},
 				article_body: { type: String },
-				created_by: { type: String },
+				created_by: { type: String, },
+				article_blurb: { type: String, },
 				created_at: { type: Date, default: Date.now },
 				votes: [{ vote: { type: Number }, user_id: { type: Number } }],
 				comments: [
@@ -79,5 +83,17 @@ const userSchema = new mongoose.Schema({
 		],
 	},
 });
+
+userSchema.pre("save", function (next) {
+  this.teacher.articles.forEach((article) => {
+	  article.created_by = this.userName;
+	  if (!article.article_blurb) {
+		    article.article_blurb = article.article_body.substring(0, 100);
+	  }
+  });
+  next();
+});
+
+
 
 module.exports = userSchema;
