@@ -9,18 +9,20 @@ const {
 exports.fetchArticles = async (queries) => {
     const User = connectionPool.model("User", userSchema);
 
-
-    console.log('in the model')
-    const articles = await User.aggregate([
-        { $match: { "teacher.articles.article_title": { $exists: true } } },
-        { $project: {'teacher.articles': 1}}
-    ])
+    
     const sortBy = handleSort(queries);
     let query = {
       "teacher.articles.artcile_title": { $exists: true },
     };
+    console.log(query)
     query = Object.assign(query, buildQuery(queries));
-    
+
+  await checkFieldExists("User", query);
+    const articles = await User.aggregate([
+      { $match: query },
+      { $project: { "teacher.articles": 1 } },
+      { $sort: sortBy },
+    ]);
     const formattedArticles = articles.map((article) => { return article.teacher.articles }).flat();
   
     return formattedArticles;
