@@ -171,7 +171,22 @@
 
 	"GET /api/users/articles": {
 		"description": "serves an array of objects for all articles",
-		"queries": [],
+		"queries": [
+			{"article_category": "this query allows you to find a specific article by category",
+		"example": "/api/users/articles?article_category=Quantum Physics"},
+			{"author": "this query allows you to find a specific article by the user who created it",
+		"example": "/api/users/articles?author=BenjiSmith1990"},
+			{"article_title": "this query allows you to find a specific article by title",
+		"example": "/api/users/articles?article_title=Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey"},
+			{"article_votes": "this query allows you to find a specific article by the number of votes it has, popular artilces acan be queried, by finding the articles with the votes greater than a given number",
+		"example": "/api/users/articles?article_votes>=10"},
+			{"article_date": "this query allows you to find a specific article by the date it was created by the year it was created",
+		"example": "/api/users/articles?article_date=2023"},
+			{"sort_by": [
+				{"total_votes": "this query allows you to sort the articles by the number of votes they have, ascending and descending"},
+				{"date": "this query allows you to sort the articles by the date they were created, ascending and descending"}
+				]}
+		],
 		"exampleResponse": {
           "article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
           "article_category": "Quantum Physics",
