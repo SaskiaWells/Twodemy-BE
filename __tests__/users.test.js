@@ -384,7 +384,6 @@ describe("/api/users/teachers/:_id", () => {
 			.get("/api/users/teachers/648ac42475c58ca8fbe8b6db")
 			.expect(200)
 			.then((response) => {
-				console.log(response.body);
 				expect(Object.keys(response.body).length).toBe(1);
 				const teacher = response.body.teacher;
 				expect(typeof teacher._id).toBe("string");
