@@ -379,7 +379,7 @@ describe("/api/users/students/:_id", () => {
 });
 
 describe("/api/users/teachers/:_id", () => {
-	test.only("GET Status 200 - returns a teacher object whose ID matches the passed :_id parameter", () => {
+	test("GET Status 200 - returns a teacher object whose ID matches the passed :_id parameter", () => {
 		return request(app)
 			.get("/api/users/teachers/648ac42475c58ca8fbe8b6db")
 			.expect(200)
