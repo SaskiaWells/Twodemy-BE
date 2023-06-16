@@ -400,18 +400,44 @@
 			}
 		],
 		"exampleResponse": {
-			"article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
-			"article_category": "Quantum Physics",
-			"article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
-			"article_body": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
-			"created_by": "CadenGG",
-			"comments": [],
-			"_id": "648b09600ce7f912deb6c506",
-			"created_at": "2023-06-15T12:51:44.348Z",
-			"votes": [],
-			"article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
-		}
+          "article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
+          "article_category": "Quantum Physics",
+          "article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
+          "article_body": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
+          "created_by": "CadenGG",
+          "comments": [],
+          "_id": "648b09600ce7f912deb6c506",
+          "created_at": "2023-06-15T12:51:44.348Z",
+          "votes": [],
+          "total_votes": 0,
+          "article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
+        }
+
 	},
+
+
+  "GET /api/users/articles/:_id/comments": {
+    "description": "serves an array of all comments for a given article",
+    "queries": [],
+      "exampleResponse":[
+        {
+          "votes": [],
+          "total_votes": 0,
+          "_id": "648b09600ce7f912deb6c507",
+          "created_at": "2023-06-15T12:51:44.348Z",
+          "body": "I love this article",
+          "created_by": "CadenGG"
+        },
+        {
+          "votes": [],
+          "total_votes": 0,
+          "_id": "648b09600ce7f912deb6c507",
+          "created_at": "2023-06-15T12:51:44.348Z",
+          "body": "I love this article",
+          "created_by": "CadenGG"
+        }
+      ]
+  },
 	"GET /api/users/courses": {
 		"description": "serves an array of all courses objects",
 		"queries": [
