@@ -32,6 +32,7 @@ exports.buildQuery = (queries) => {
     author: "teacher.articles.created_by",
     article_date: "teacher.articles.created_at",
     article_votes: "teacher.articles.total_votes",
+    article_title: "teacher.articles.article_title",
   };
 
   for (const key of Object.keys(queries)) {

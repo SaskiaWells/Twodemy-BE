@@ -9,44 +9,64 @@ beforeEach(() => seed(testData));
 afterAll(() => connection.close());
 
 describe("/api/articles", () => {
-  test("GET Status 200 - returns an array of all articles", () => {
-    return request(app)
-      .get("/api/users/articles")
-      .expect(200)
-      .then((response) => {
-        expect(response.body.articles.length).toBe(4);
-        response.body.articles.forEach((article) => {
-          expect(typeof article._id).toBe("string");
-          expect(typeof article.article_title).toBe("string");
-          expect(typeof article.article_category).toBe("string");
-          expect(typeof article.article_img).toBe("string");
-          expect(typeof article.article_blurb).toBe("string");
-          expect(typeof article.article_body).toBe("string");
-          expect(typeof article.created_by).toBe("string");
-          expect(typeof article.created_at).toBe("string");
-          expect(Array.isArray(article.votes)).toBe(true);
-          expect(Array.isArray(article.comments)).toBe(true);
-        });
-      });
-  });
-  test("GET Status 200 - QUERY article_category:Quantum Physics - artilce with that category", () => {
-    return request(app)
-      .get("/api/users/articles?article_category=Quantum Physics")
-      .expect(200)
-      .then((response) => {
-        response.body.articles.forEach((article) => {
-          expect(typeof article.article_title).toBe("string");
-          expect(article.article_category).toBe("Quantum Physics");
-          expect(typeof article.article_img).toBe("string");
-          expect(typeof article.article_blurb).toBe("string");
-          expect(typeof article.article_body).toBe("string");
-          expect(typeof article.created_by).toBe("string");
-          expect(typeof article.created_at).toBe("string");
-          expect(Array.isArray(article.votes)).toBe(true);
-          expect(Array.isArray(article.comments)).toBe(true);
-        });
-      });
-  });
+    test("GET Status 200 - returns an array of all articles", () => {
+        return request(app)
+            .get("/api/users/articles")
+            .expect(200)
+            .then((response) => {
+                expect(response.body.articles.length).toBe(4);
+                response.body.articles.forEach((article) => {
+                    expect(typeof article._id).toBe("string");
+                    expect(typeof article.article_title).toBe("string");
+                    expect(typeof article.article_category).toBe("string");
+                    expect(typeof article.article_img).toBe("string");
+                    expect(typeof article.article_blurb).toBe("string");
+                    expect(typeof article.article_body).toBe("string");
+                    expect(typeof article.created_by).toBe("string");
+                    expect(typeof article.created_at).toBe("string");
+                    expect(Array.isArray(article.votes)).toBe(true);
+                    expect(Array.isArray(article.comments)).toBe(true);
+                });
+            });
+    });
+    test("GET Status 200 - QUERY article_category:Quantum Physics - artilce with that category", () => {
+        return request(app)
+            .get("/api/users/articles?article_category=Quantum Physics")
+            .expect(200)
+            .then((response) => {
+                response.body.articles.forEach((article) => {
+                    expect(typeof article.article_title).toBe("string");
+                    expect(article.article_category).toBe("Quantum Physics");
+                    expect(typeof article.article_img).toBe("string");
+                    expect(typeof article.article_blurb).toBe("string");
+                    expect(typeof article.article_body).toBe("string");
+                    expect(typeof article.created_by).toBe("string");
+                    expect(typeof article.created_at).toBe("string");
+                    expect(Array.isArray(article.votes)).toBe(true);
+                    expect(Array.isArray(article.comments)).toBe(true);
+                });
+            });
+    });
+    
+    test('GET status 200  QUERY article_title:Basics of music - artilce with that author', () => {
+        return request(app)
+            .get('/api/users/articles?article_title=Basics of music')
+            .expect(200)
+            .then((response) => {
+                response.body.articles.forEach((article) => {
+                    expect(article.article_title).toBe("Basics of music");
+                    expect(typeof article.article_category).toBe("string");
+                    expect(typeof article.article_img).toBe("string");
+                    expect(typeof article.article_blurb).toBe("string");
+                    expect(typeof article.article_body).toBe("string");
+                    expect(article.created_by).toBe("musicTeacher");
+                    expect(typeof article.created_at).toBe("string");
+                    expect(Array.isArray(article.votes)).toBe(true);
+                    expect(Array.isArray(article.comments)).toBe(true);
+                });
+            });
+    });
+
 
   test("GET Status 200 - QUERY author:CadenGG - artilce with that author", () => {
     return request(app)
@@ -66,6 +86,9 @@ describe("/api/articles", () => {
         });
       });
   });
+
+
+    
 
   test("GET Status 200 - QUERY article_date:2023 - should return all articles in that year", () => {
     return request(app)
