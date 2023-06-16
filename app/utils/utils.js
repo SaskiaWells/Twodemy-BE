@@ -1,5 +1,6 @@
 const connectionPool = require("../../db/connection");
 
+
 exports.checkFieldExists = async (modelName, query) => {
   const Model = connectionPool.model(modelName);
 
@@ -27,6 +28,11 @@ exports.buildQuery = (queries) => {
     cost: "teacher.courses.hourlyRate",
     courseRating: "teacher.courses.rating",
     discount: "teacher.courses.discountMultiplier",
+    article_category: "teacher.articles.article_category",
+    author: "teacher.articles.created_by",
+    article_date: "teacher.articles.created_at",
+    article_votes: "teacher.articles.total_votes",
+    article_title: "teacher.articles.article_title",
   };
 
   for (const key of Object.keys(queries)) {
@@ -57,6 +63,8 @@ exports.handleSort = (queries) => {
     courseRating: "teacher.courses.rating",
     cost: "teacher.courses.hourlyRate",
     discount: "teacher.courses.discountMultiplier",
+    total_votes: "teacher.articles.total_votes",
+    date: "teacher.articles.created_at",
   };
 
   let sortOptions = {};
