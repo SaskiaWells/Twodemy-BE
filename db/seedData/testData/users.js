@@ -1,99 +1,99 @@
 const users = [
-	{
-		_id: "648ac42475c58ca8fbe8b6d7",
-		userName: "BenjiSmith1990",
-		firstName: "Ben",
-		lastName: "Smith",
-		email: "thisisanemailaddress@gmail.com",
-		password: "MyPaSwOrD!",
-		profilePicture:
-			"https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/turtle-2815539-1280_ver_1.png",
-		languages: [
-			{
-				language: "English",
-				fluency: "Fluent",
-			},
-		],
-		calendar: [
-			{
-				id: 1599558745885212599841265899214855,
-				text: "Graduation",
-				start: "2023-06-13T11:30:00",
-				end: "2023-06-13T14:30:00",
-			},
-		],
-		topicsToLearn: [
-			{
-				subject: "Maths",
-				proficiency: "Subpar",
-			},
-		],
-		aboutMe: "Loveable goofball",
-		isTeacher: false,
-	},
-	{
-		_id: "648ac42475c58ca8fbe8b6db",
-		userName: "MrTeacher",
-		firstName: "Margin",
-		lastName: "Bottom",
-		email: "imateachersemail@gmail.com",
-		password: "ThIsIsApAsSwOrD",
-		profilePicture:
-			"https://jappliedecologyblog.files.wordpress.com/2022/01/picture2-2.jpg?w=1200",
-		languages: [
-			{
-				language: "English",
-				fluency: "Fluent",
-			},
-			{
-				language: "Spanish",
-				fluency: "Que",
-			},
-		],
-		calendar: [
-			{
-				id: 1599558745885212599841265899214855,
-				text: "Graduation",
-				start: "2023-06-13T11:30:00",
-				end: "2023-06-13T14:30:00",
-			},
-			{
-				id: 15995587458852125998412658992148494855,
-				text: "Handing Out Scrolls",
-				start: "2023-06-13T11:30:00",
-				end: "2023-06-13T14:30:00",
-			},
-		],
-		topicsToLearn: [
-			{
-				subject: "I know everything",
-				proficiency: "Mongod",
-			},
-		],
-		aboutMe: "Know it all",
-		isTeacher: true,
-		teacher: {
-			isPremium: true,
-			courses: [
-				{
-					courseName: "How to be a Mongod",
-					courseCategory: "Coding",
-					hourlyRate: 50,
-					courseImage:
-						"https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
-					rating: 5,
-					description: "Learn to be a god like me",
-				},
-			],
-			articles: [
-				{
-					article_title: "Mongod Tutorial",
-					article_category: "cooking",
-					article_img:
-						"https://coralogix.com/wp-content/uploads/2023/03/MongoDB-1000X1000.png",
-					article_body:
-						"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-					created_by: "MrTeacher",
+  {
+    _id: "648ac42475c58ca8fbe8b6d7",
+    userName: "BenjiSmith1990",
+    firstName: "Ben",
+    lastName: "Smith",
+    email: "thisisanemailaddress@gmail.com",
+    password: "MyPaSwOrD!",
+    profilePicture:
+      "https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/turtle-2815539-1280_ver_1.png",
+    languages: [
+      {
+        language: "English",
+        fluency: "Fluent",
+      },
+    ],
+    calendar: [
+      {
+        id: 1599558745885212599841265899214855,
+        text: "Graduation",
+        start: "2023-06-13T11:30:00",
+        end: "2023-06-13T14:30:00",
+      },
+    ],
+    topicsToLearn: [
+      {
+        subject: "Maths",
+        proficiency: "Subpar",
+      },
+    ],
+    aboutMe: "Loveable goofball",
+    isTeacher: false,
+  },
+  {
+    _id: "648ac42475c58ca8fbe8b6db",
+    userName: "MrTeacher",
+    firstName: "Margin",
+    lastName: "Bottom",
+    email: "imateachersemail@gmail.com",
+    password: "ThIsIsApAsSwOrD",
+    profilePicture:
+      "https://jappliedecologyblog.files.wordpress.com/2022/01/picture2-2.jpg?w=1200",
+    languages: [
+      {
+        language: "English",
+        fluency: "Fluent",
+      },
+      {
+        language: "Spanish",
+        fluency: "Que",
+      },
+    ],
+    calendar: [
+      {
+        id: 1599558745885212599841265899214855,
+        text: "Graduation",
+        start: "2023-06-13T11:30:00",
+        end: "2023-06-13T14:30:00",
+      },
+      {
+        id: 15995587458852125998412658992148494855,
+        text: "Handing Out Scrolls",
+        start: "2023-06-13T11:30:00",
+        end: "2023-06-13T14:30:00",
+      },
+    ],
+    topicsToLearn: [
+      {
+        subject: "I know everything",
+        proficiency: "Mongod",
+      },
+    ],
+    aboutMe: "Know it all",
+    isTeacher: true,
+    teacher: {
+      isPremium: true,
+      courses: [
+        {
+          courseName: "How to be a Mongod",
+          courseCategory: "Coding",
+          hourlyRate: 50,
+          courseImage:
+            "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+          rating: 5,
+          description: "Learn to be a god like me",
+        },
+      ],
+      articles: [
+        {
+          article_title: "Mongod Tutorial",
+          article_category: "cooking",
+          article_img:
+            "https://coralogix.com/wp-content/uploads/2023/03/MongoDB-1000X1000.png",
+          article_body:
+            "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+          created_by: "MrTeacher",
 
           comments: [
             {
@@ -297,11 +297,13 @@ const users = [
           article_body:
             "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
           created_by: "Caden",
+          _id: "5f760b7a9b3d9b0b1c9b4b1e",
           comments: [
             {
               comment_body: "Niccce",
               created_by: "Emmy",
             },
+            { comment_body: "Niccce article", created_by: "Emmy" },
           ],
         },
       ],
