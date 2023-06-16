@@ -1,5 +1,5 @@
 exports.handleInvalidId = (err, req, res, next) => {
-  if (err.kind === "ObjectId") {
+  if (err.kind === "ObjectId" || err.toString().slice(0, 9) === "BSONError") {
     res.status(400).send({ msg: "Invalid ID" });
   } else {
     next(err);
