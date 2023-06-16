@@ -1,6 +1,5 @@
 const connectionPool = require("../../db/connection");
 
-
 exports.checkFieldExists = async (modelName, query) => {
   const Model = connectionPool.model(modelName);
 
@@ -76,4 +75,32 @@ exports.handleSort = (queries) => {
   }
 
   return sortOptions;
+};
+
+exports.validateFields = (object) => {
+  const whiteList = [
+    "userName",
+    "firstName",
+    "lastName",
+    "email",
+    "password",
+    "profilePicture",
+    "languages",
+    "calendar",
+    "topicsToLearn",
+    "aboutMe",
+  ];
+
+  const extraKeys = Object.keys(object).filter(
+    (key) => !whiteList.includes(key)
+  );
+
+  if (extraKeys.length > 0) {
+    return Promise.reject({
+      status: 404,
+      msg: `Invalid fields found: ${extraKeys.join(", ")}`,
+    });
+  }
+
+  return;
 };
