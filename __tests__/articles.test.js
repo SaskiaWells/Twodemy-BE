@@ -32,23 +32,26 @@ describe("/api/articles", () => {
 });
 
 describe("/api/users/articles/:_id", () => {
-	test.only("GET Status 200 - returns an article object whose ID matches the passed :_id parameter", () => {
+	test("GET Status 200 - returns an article object whose ID matches the passed :_id parameter", () => {
 		return request(app)
 			.get("/api/users/articles/648ac42475c58ca8fbe8b6ff")
 			.expect(200)
 			.then((response) => {
 				expect(Object.keys(response.body).length).toBe(1);
-				const student = response.body.student;
-				expect(typeof student._id).toBe("string");
-				expect(typeof student.userName).toBe("string");
-				expect(typeof student.firstName).toBe("string");
-				expect(typeof student.lastName).toBe("string");
-				expect(typeof student.email).toBe("string");
-				expect(typeof student.password).toBe("string");
-				expect(typeof student.profilePicture).toBe("string");
-				expect(typeof student.isTeacher).toBe("boolean");
-				expect(Array.isArray(student.topicsToLearn)).toBe(true);
-				expect(student.topicsToLearn.length).toBeGreaterThan(0);
+				const article = response.body.article;
+				expect(typeof article.article_title).toBe("string");
+				expect(typeof article.article_category).toBe("string");
+				expect(typeof article.article_img).toBe("string");
+				expect(typeof article.article_body).toBe("string");
+				expect(typeof article.created_by).toBe("string");
+				expect(typeof article.comments).toBe("object");
+				expect(Array.isArray(article.comments)).toBe(true);
+				expect(typeof article._id).toBe("string");
+				expect(article._id).toBe("648ac42475c58ca8fbe8b6ff");
+				expect(typeof article.created_at).toBe("string");
+				expect(typeof article.votes).toBe("object");
+				expect(Array.isArray(article.votes)).toBe(true);
+				expect(article.article_blurb.length).toBeLessThan(101);
 			});
 	});
 	test("GET Status 404 - correctly handles error through middleware when the given _id doesn't exist", () => {

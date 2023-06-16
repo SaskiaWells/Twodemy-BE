@@ -13,7 +13,7 @@ describe("/api", () => {
 				expect(typeof res.body).toBe("object");
 				const endpoints = res.body.endpoints;
 				const endpointKeys = Object.keys(endpoints);
-				expect(endpointKeys.length).toBe(9);
+				expect(endpointKeys.length).toBe(10);
 				expect(endpoints.hasOwnProperty("GET /api")).toBe(true);
 				expect(endpoints.hasOwnProperty("GET /api/users")).toBe(true);
 				expect(endpoints.hasOwnProperty("GET /api/users/students")).toBe(true);
@@ -27,6 +27,9 @@ describe("/api", () => {
 					true
 				);
 				expect(endpoints.hasOwnProperty("GET /api/users/courses")).toBe(true);
+				expect(endpoints.hasOwnProperty("GET /api/users/articles/:_id")).toBe(
+					true
+				);
 			});
 	});
 });

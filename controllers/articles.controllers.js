@@ -21,7 +21,6 @@ exports.getArticleById = async (req, res, next) => {
 		const article = await fetchArticleById(params);
 		res.status(200).send({ article });
 	} catch (err) {
-		console.log(err, "error on controller");
 		next(err);
 	}
 };
