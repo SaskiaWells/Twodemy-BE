@@ -215,7 +215,7 @@ describe("/api/articles", () => {
 describe("/api/users/articles/:_id", () => {
 	test("GET Status 200 - returns an article object whose ID matches the passed :_id parameter", () => {
 		return request(app)
-			.get("/api/users/articles/648ac42475c58ca8fbe8b6ff")
+			.get("/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e")
 			.expect(200)
 			.then((response) => {
 				expect(Object.keys(response.body).length).toBe(1);
@@ -228,7 +228,7 @@ describe("/api/users/articles/:_id", () => {
 				expect(typeof article.comments).toBe("object");
 				expect(Array.isArray(article.comments)).toBe(true);
 				expect(typeof article._id).toBe("string");
-				expect(article._id).toBe("648ac42475c58ca8fbe8b6ff");
+				expect(article._id).toBe("5f760b7a9b3d9b0b1c9b4b1e");
 				expect(typeof article.created_at).toBe("string");
 				expect(typeof article.votes).toBe("object");
 				expect(Array.isArray(article.votes)).toBe(true);
