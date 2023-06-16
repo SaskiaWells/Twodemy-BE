@@ -2,7 +2,6 @@ const {
 	getArticles,
 	getArticleById,
 } = require("../../controllers/articles.controllers");
-const { getArticles } = require('../../controllers/articles.controllers')
 const { getArticleComments } = require('../../controllers/comments.controllers')
 
 const articleRouter = require("express").Router();
