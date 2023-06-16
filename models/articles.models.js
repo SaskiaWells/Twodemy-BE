@@ -7,23 +7,58 @@ const {
 } = require("../app/utils/utils");
 
 exports.fetchArticles = async (queries) => {
-    const User = connectionPool.model("User", userSchema);
+  const User = connectionPool.model("User", userSchema);
 
-    
-    const sortBy = handleSort(queries);
-    let query = {
-      "teacher.articles.artcile_title": { $exists: true },
-    };
-    console.log(query)
-    query = Object.assign(query, buildQuery(queries));
+  const sortBy = handleSort(queries);
+  let query = {
+    "teacher.articles.article_title": { $exists: true },
+  };
 
-  await checkFieldExists("User", query);
-    const articles = await User.aggregate([
+  query = Object.assign(query, buildQuery(queries));
+
+  if (query.hasOwnProperty("teacher.articles.created_at")) {
+    year = query["teacher.articles.created_at"];
+
+    delete query["teacher.articles.created_at"];
+
+    await checkFieldExists("User", query);
+    const specificYearArticles = await User.aggregate([
       { $match: query },
+      { $unwind: "$teacher.articles" },
+      {
+        $match: {
+          $expr: {
+            $eq: [{ $year: "$teacher.articles.created_at" }, year],
+          },
+        },
+      },
       { $project: { "teacher.articles": 1 } },
       { $sort: sortBy },
     ]);
-    const formattedArticles = articles.map((article) => { return article.teacher.articles }).flat();
-  
-    return formattedArticles;
+
+    const newformattedArticles = specificYearArticles
+      .map((article) => {
+        return article.teacher.articles;
+      })
+      .flat();
+
+    return newformattedArticles;
+  }
+
+  await checkFieldExists("User", query);
+
+  //use aggregate to return ones with the date of a specific query if that query exists
+  const articles = await User.aggregate([
+    { $match: query },
+    { $project: { "teacher.articles": 1 } },
+    { $sort: sortBy },
+  ]);
+
+  const formattedArticles = articles
+    .map((article) => {
+      return article.teacher.articles;
+    })
+    .flat();
+
+  return formattedArticles;
 };

@@ -59,13 +59,15 @@ const userSchema = new mongoose.Schema({
 				created_by: { type: String, },
 				article_blurb: { type: String, },
 				created_at: { type: Date, default: Date.now },
-				votes: [{ vote: { type: Number }, user_id: { type: Number } }],
+				votes: [{ vote: { type: Number }, user_id: { type: String } }],
+				total_votes: { type: Number, default: 0 },
 				comments: [
 					{
 						comment_body: { type: String },
 						created_by: { type: String },
 						created_at: { type: Date, default: Date.now },
-						votes: [{ vote: { type: Number }, user_id: { type: Number } }],
+						votes: [{ vote: { type: Number }, user_id: { type: String } }],
+						total_votes: { type: Number, default: 0 },
 					},
 				],
 			},
@@ -85,12 +87,17 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre("save", function (next) {
-  this.teacher.articles.forEach((article) => {
-	  article.created_by = this.userName;
-	  if (!article.article_blurb) {
-		    article.article_blurb = article.article_body.substring(0, 100);
-	  }
-  });
+	this.teacher.articles.forEach((article) => {
+		article.created_by = this.userName;
+		if (!article.article_blurb) {
+			article.article_blurb = article.article_body.substring(0, 100);
+		}
+	
+
+		const totalVotes = article.votes.reduce((acc, vote) => acc + vote.vote, 0);
+		article.total_votes = totalVotes;
+	
+ })
   next();
 });
 
