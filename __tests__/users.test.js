@@ -3,6 +3,7 @@ const app = require("../app/app.js");
 const connection = require("../db/connection.js");
 const seed = require("../db/seeds/seed.js");
 const testData = require("../db/seedData/testData/users.js");
+const mongoose = require("mongoose");
 
 beforeEach(() => seed(testData));
 
@@ -26,6 +27,40 @@ describe("/api/users", () => {
           expect(typeof user.isTeacher).toBe("boolean");
         });
       });
+  });
+  test.only("should delete student", async () => {
+    await request(app)
+      .delete("/api/users/648ac42475c58ca8fbe8b6d7")
+      .expect(204);
+    const response = await request(app).get(
+      "/api/users/students/648ac42475c58ca8fbe8b6d7"
+    );
+    expect(response.status).toBe(404);
+    expect(response.body.msg).toBe("User not found");
+  });
+  test.only("should delete teacher", async () => {
+    await request(app)
+      .delete("/api/users/648ac42475c58ca8fbe8b6db")
+      .expect(204);
+    const response = await request(app).get(
+      "/api/users/students/648ac42475c58ca8fbe8b6db"
+    );
+    expect(response.status).toBe(404);
+    expect(response.body.msg).toBe("User not found");
+  });
+  test.only("should throw an error if invalid username is given", async () => {
+    const nonExistentId = new mongoose.Types.ObjectId();
+    const response = await request(app)
+      .delete(`/api/users/${nonExistentId}`)
+      .expect(404);
+    expect(response.body.msg).toBe("User not found");
+  });
+  test.only("should throw an error if invalid username is given", async () => {
+    const nonExistentId = new mongoose.Types.ObjectId();
+    const response = await request(app)
+      .delete(`/api/users/${nonExistentId}1`)
+      .expect(400);
+    expect(response.body.msg).toBe("Invalid user ID");
   });
 });
 
