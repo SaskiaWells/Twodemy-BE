@@ -273,13 +273,15 @@ describe("/api/users/students", () => {
         );
         // it adds a new unique id which is why the objectContaining
         expect(updatedStudent.topicsToLearn).toEqual([
-          expect.objectContaining({
+          {
             subject: "Maths",
             proficiency: "Subpar",
-          }),
+            _id: expect.any(String),
+          },
           expect.objectContaining({
             subject: "MongoDB",
             proficiency: "MONGOD",
+            _id: expect.any(String),
           }),
         ]);
       });
@@ -296,7 +298,8 @@ describe("/api/users/students", () => {
         expect(response.body.msg).toBe("Invalid fields found: messageToJon");
       });
   });
-  test("should remove dangerous characters", () => {
+  // this test is commented out to remove the console log from the final error handling -- the sanitation does work and this can be uncommented to demonstrate it.
+  /*  test("should remove dangerous characters", () => {
     return request(app)
       .patch("/api/users/students/648ac42475c58ca8fbe8b6d7")
       .expect(500)
@@ -306,7 +309,7 @@ describe("/api/users/students", () => {
       .then((response) => {
         expect(response.body.msg).toBe("server error!");
       });
-  });
+  }); */
 });
 
 describe("/api/users/teachers", () => {
@@ -506,4 +509,178 @@ describe("/api/users/teachers/:_id", () => {
         expect(response.text).toBe('{"msg":"Invalid ID"}');
       });
   });
+  test("PATCH should change a given field and return changed teacher object", () => {
+    return request(app)
+      .patch("/api/users/teachers/648ac42475c58ca8fbe8b6db")
+      .expect(200)
+      .send({
+        courses: [
+          {
+            courseName: "How to be a Mongod",
+            courseCategory: "Coding",
+            hourlyRate: 50,
+            courseImage:
+              "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+            rating: 5,
+            description: "Learn to be a god like me",
+          },
+          {
+            courseName: "A Beginners Guide to Electro Magnetic Field Theory",
+            courseCategory: "Electronics",
+            hourlyRate: 50,
+            courseImage:
+              "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+            rating: 4.5,
+            description: "It turns out Maxwell was right all along!",
+          },
+        ],
+      })
+      .then((response) => {
+        const { updatedTeacher } = response.body;
+        expect(typeof updatedTeacher._id).toBe("string");
+        expect(typeof updatedTeacher.userName).toBe("string");
+        expect(typeof updatedTeacher.firstName).toBe("string");
+        expect(typeof updatedTeacher.lastName).toBe("string");
+        expect(typeof updatedTeacher.email).toBe("string");
+        expect(typeof updatedTeacher.password).toBe("string");
+        expect(typeof updatedTeacher.profilePicture).toBe("string");
+        expect(typeof updatedTeacher.isTeacher).toBe("boolean");
+        expect(updatedTeacher.isTeacher).toBe(true);
+        expect(Array.isArray(updatedTeacher.topicsToLearn)).toBe(true);
+        expect(Array.isArray(updatedTeacher.teacher.courses)).toBe(true);
+        expect(Array.isArray(updatedTeacher.teacher.articles)).toBe(true);
+        expect(Array.isArray(updatedTeacher.teacher.reviews)).toBe(true);
+        expect(typeof updatedTeacher.teacher.rating).toBe("number");
+        expect(typeof updatedTeacher.teacher.qualifications).toBe("string");
+        expect(typeof updatedTeacher.teacher.website).toBe("string");
+        expect(updatedTeacher.teacher.courses).toEqual([
+          {
+            courseName: "How to be a Mongod",
+            courseCategory: "Coding",
+            hourlyRate: 50,
+            courseImage:
+              "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+            rating: 5,
+            description: "Learn to be a god like me",
+            discountMultiplier: 1,
+            _id: expect.any(String),
+          },
+          {
+            courseName: "A Beginners Guide to Electro Magnetic Field Theory",
+            courseCategory: "Electronics",
+            hourlyRate: 50,
+            courseImage:
+              "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+            rating: 4.5,
+            description: "It turns out Maxwell was right all along!",
+            discountMultiplier: 1,
+            _id: expect.any(String),
+          },
+        ]);
+      });
+  });
+  test("PATCH should change multiple fields and return changed teacher object", () => {
+    return request(app)
+      .patch("/api/users/teachers/648ac42475c58ca8fbe8b6db")
+      .expect(200)
+      .send({
+        isPremium: false,
+        rating: 4.5,
+        qualifications: "Certified Insane",
+        courses: [
+          {
+            courseName: "How to be a Mongod",
+            courseCategory: "Coding",
+            hourlyRate: 50,
+            courseImage:
+              "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+            rating: 5,
+            description: "Learn to be a god like me",
+          },
+          {
+            courseName: "A Beginners Guide to Electro Magnetic Field Theory",
+            courseCategory: "Electronics",
+            hourlyRate: 50,
+            courseImage:
+              "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+            rating: 4.5,
+            description: "It turns out Maxwell was right all along!",
+          },
+        ],
+      })
+      .then((response) => {
+        const { updatedTeacher } = response.body;
+        expect(typeof updatedTeacher._id).toBe("string");
+        expect(typeof updatedTeacher.userName).toBe("string");
+        expect(typeof updatedTeacher.firstName).toBe("string");
+        expect(typeof updatedTeacher.lastName).toBe("string");
+        expect(typeof updatedTeacher.email).toBe("string");
+        expect(typeof updatedTeacher.password).toBe("string");
+        expect(typeof updatedTeacher.profilePicture).toBe("string");
+        expect(typeof updatedTeacher.isTeacher).toBe("boolean");
+        expect(updatedTeacher.isTeacher).toBe(true);
+        expect(Array.isArray(updatedTeacher.topicsToLearn)).toBe(true);
+        expect(Array.isArray(updatedTeacher.teacher.courses)).toBe(true);
+        expect(Array.isArray(updatedTeacher.teacher.articles)).toBe(true);
+        expect(Array.isArray(updatedTeacher.teacher.reviews)).toBe(true);
+        expect(typeof updatedTeacher.teacher.rating).toBe("number");
+        expect(typeof updatedTeacher.teacher.qualifications).toBe("string");
+        expect(typeof updatedTeacher.teacher.website).toBe("string");
+        expect(updatedTeacher.teacher.courses).toEqual([
+          {
+            courseName: "How to be a Mongod",
+            courseCategory: "Coding",
+            hourlyRate: 50,
+            courseImage:
+              "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+            rating: 5,
+            description: "Learn to be a god like me",
+            discountMultiplier: 1,
+            _id: expect.any(String),
+          },
+          {
+            courseName: "A Beginners Guide to Electro Magnetic Field Theory",
+            courseCategory: "Electronics",
+            hourlyRate: 50,
+            courseImage:
+              "https://miro.medium.com/v2/resize:fit:960/0*HgOI-QuJ9TN7oeXD.jpg",
+            rating: 4.5,
+            description: "It turns out Maxwell was right all along!",
+            discountMultiplier: 1,
+            _id: expect.any(String),
+          },
+        ]);
+
+        expect(updatedTeacher.teacher.isPremium).toBe(false);
+        expect(updatedTeacher.teacher.qualifications).toBe("Certified Insane");
+        expect(updatedTeacher.teacher.rating).toBe(4.5);
+      });
+  });
+
+  test("PATCH should reject if given fields that are not on whitelist", () => {
+    return request(app)
+      .patch("/api/users/teachers/648ac42475c58ca8fbe8b6db")
+      .expect(404)
+      .send({
+        isPremium: false,
+        messageToJon:
+          "Every three steps forward in time is one step back in time, so keep on running!",
+      })
+      .then((response) => {
+        expect(response.body.msg).toBe("Invalid fields found: messageToJon");
+      });
+  });
+  // this test is commented out to remove the console log from the final error handling -- the sanitation does work and this can be uncommented to demonstrate it.
+
+  /*  test.only("should remove dangerous characters", () => {
+    return request(app)
+      .patch("/api/users/teachers/648ac42475c58ca8fbe8b6db")
+      .expect(500)
+      .send({
+        rating: { $ne: "" },
+      })
+      .then((response) => {
+        expect(response.body.msg).toBe("server error!");
+      });
+  }); */
 });

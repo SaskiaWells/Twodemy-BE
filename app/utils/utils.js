@@ -89,6 +89,13 @@ exports.validateFields = (object) => {
     "calendar",
     "topicsToLearn",
     "aboutMe",
+    "courses",
+    "isPremium",
+    "articles",
+    "rating",
+    "qualifications",
+    "website",
+    "reviews",
   ];
 
   const extraKeys = Object.keys(object).filter(
@@ -103,4 +110,26 @@ exports.validateFields = (object) => {
   }
 
   return;
+};
+
+exports.buildPatchTeacherQuery = (fields) => {
+  const patchTeacherLookup = {
+    isPremium: "teacher.isPremium",
+    rating: "teacher.rating",
+    qualifications: "teacher.qualifications",
+    website: "teacher.website",
+    courses: "teacher.courses",
+    articles: "teacher.articles",
+    reviews: "teachersRouter.reviews",
+  };
+  const newFields = {};
+
+  for (const key in fields) {
+    if (patchTeacherLookup[key]) {
+      const mappedKey = patchTeacherLookup[key];
+      newFields[mappedKey] = fields[key];
+    }
+  }
+
+  return newFields;
 };
