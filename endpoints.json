@@ -36,7 +36,9 @@
             }
           ],
           "rating": 4,
+
           "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+
           "website": "www.teacher.com",
           "reviews": [
             {
@@ -76,7 +78,9 @@
             }
           ],
           "rating": 4,
+
           "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+
           "website": "www.teacher.com",
           "reviews": [
             {
@@ -196,7 +200,9 @@
           "courses": ["Array"],
           "articles": ["Array"],
           "rating": 1,
+
           "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+
           "website": "www.website.com",
           "reviews": ["Array"],
           "isPremium": false
@@ -445,7 +451,8 @@
       "courseRating=0-5 (putting < OR > will serve matching range)",
       "discount=0-1(float)",
       "sortBy=cost|courseRating|discount",
-      "order=asc|desc (defaults to desc)"
+      "order=asc|desc (defaults to desc)",
+      "courseList=true gives a list of all course categories with duplicates removed."
     ],
     "exampleResponse": [
       {
@@ -589,6 +596,40 @@
     "description": "Deletes a user with the specified ID",
     "exampleResponse": {
       "message": "User deleted successfully"
+    }
+  },
+
+  "GET /api/courses/categories": {
+    "description": "serves an array of all course categories",
+    "exampleResponse": [
+      "cooking",
+      "lifestyle",
+      "music",
+      "art",
+      "science",
+      "maths",
+      "english",
+      "history",
+      "geography",
+      "languages",
+      "other"
+    ]
+  },
+
+  "PATCH /api/:article_id/comments/:comment_id ": {
+    "description": "Updates a comment with the specified ID",
+    "sent": { "comment_body": "I love this article" }
+  },
+
+  "GET /api/:article_id/comments": {
+    "description": "serves an array of all comments for a given article",
+    "exampleResponse": {
+      "comment_body": "I love this article",
+      "created_by": "Emmy",
+      "total_votes": 0,
+      "_id": "649072e65ee8d195ad0abd66",
+      "created_at": "2023-06-19T15:23:18.215Z",
+      "votes": []
     }
   }
 }

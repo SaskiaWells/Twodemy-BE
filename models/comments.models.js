@@ -1,6 +1,8 @@
+const { validateFields } = require("../app/utils/utils");
 const connectionPool = require("../db/connection");
 const userSchema = require("../db/seedData/schemas/userSchema");
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Types;
 
 exports.fetchArticleComments = async (_id) => {
   const User = connectionPool.model("User", userSchema);
@@ -20,3 +22,35 @@ exports.fetchArticleComments = async (_id) => {
    return formattedComments;
  
 };
+
+exports.updateArticleComments = async (_id, comment_id, comment) => {
+
+  if (typeof comment.comment_body !== 'string') {
+    return Promise.reject({ status: 400, msg: "Invalid field type" })
+  }
+    
+  const User = connectionPool.model("User", userSchema);
+
+  await validateFields(comment);
+
+  const updatedUser = await User.findOneAndUpdate(
+    { "teacher.articles.comments._id": comment_id },
+    { $set: { "teacher.articles.$[].comments.$[comment].comment_body": comment.comment_body } },
+    {
+      new: true,
+      arrayFilters: [{ "comment._id": comment_id }],
+    },
+    { $project: { "teacher.articles.comments": 1, _id: 0 } }
+  );
+
+  if (!updatedUser) {
+    return Promise.reject({ status: 404, msg: "Comment does not exist" });
+  }
+  
+  const updatedComment = updatedUser.teacher.articles
+    .flatMap((article) => article.comments)
+    .filter((comment) => comment._id.equals(new ObjectId(comment_id)))[0];
+    
+
+  return updatedComment
+}

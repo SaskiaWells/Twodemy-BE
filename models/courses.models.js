@@ -58,3 +58,14 @@ exports.fetchCourseById = async (params) => {
     return Promise.reject({ status: 404, msg: "Course not found" })
   }
 };
+
+exports.fetchCourseCategories = async () => {
+
+
+  const User = connectionPool.model("User", userSchema);
+
+  const distinctCourses = await User.distinct('teacher.courses.courseCategory')
+  console.log(distinctCourses)
+  return distinctCourses
+
+}

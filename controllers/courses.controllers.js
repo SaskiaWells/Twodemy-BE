@@ -1,4 +1,4 @@
-const { fetchCourses, fetchCourseById } = require("../models/courses.models");
+const { fetchCourses, fetchCourseById, fetchCourseCategories } = require("../models/courses.models");
 
 exports.getCourses = async (req, res, next) => {
   const queries = req.query;
@@ -19,5 +19,15 @@ exports.getCoursesById = async (req, res, next) => {
     res.status(200).send({ course })
   } catch (err) {
       next(err);
+  }
+}
+
+exports.getCourseCategories = async (req, res, next) => {
+
+  try {
+    const categories = await fetchCourseCategories();
+    res.status(200).send({ categories });
+  } catch (err) {
+    next(err);
   }
 }

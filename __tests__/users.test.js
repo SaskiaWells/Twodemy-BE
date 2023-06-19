@@ -734,7 +734,7 @@ describe("/api/users/teachers/:_id", () => {
 	});
 	// this test is commented out to remove the console log from the final error handling -- the sanitation does work and this can be uncommented to demonstrate it.
 
-	/*  test.only("should remove dangerous characters", () => {
+	/*  test("should remove dangerous characters", () => {
     return request(app)
       .patch("/api/users/teachers/648ac42475c58ca8fbe8b6db")
       .expect(500)
