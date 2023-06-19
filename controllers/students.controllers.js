@@ -1,6 +1,6 @@
 const {
   fetchStudents,
-  createStudent,
+  createUser,
   fetchStudentById,
 } = require("../models/students.models");
 
@@ -15,11 +15,12 @@ exports.getStudents = async (req, res, next) => {
   }
 };
 
-exports.postStudent = async (req, res, next) => {
+exports.postUser = async (req, res, next) => {
   const body = req.body;
+  consoe.log('controller');
   try {
-    newStudent = await createStudent(body);
-    res.status(201).send({ newStudent });
+    newStudent = await createUser(body);
+    res.status(201).send({ newUser });
   } catch (err) {
     next(err);
   }

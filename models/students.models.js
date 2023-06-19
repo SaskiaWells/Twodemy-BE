@@ -15,7 +15,7 @@ exports.fetchStudents = async (queries) => {
 	return students;
 };
 
-exports.createStudent = async (student) => {
+exports.createUser = async (student) => {
 	const User = connectionPool.model("User", userSchema);
 	const newStudent = new User(student);
 	await newStudent.save();
