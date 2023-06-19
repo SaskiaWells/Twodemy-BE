@@ -2,7 +2,19 @@ const {
   fetchStudents,
   createUser,
   fetchStudentById,
+  patchStudent,
 } = require("../models/students.models");
+
+exports.updateStudent = async (req, res, next) => {
+  const { body } = req;
+  const { _id } = req.params;
+  try {
+    updatedStudent = await patchStudent(body, _id);
+    res.status(200).send({ updatedStudent });
+  } catch (err) {
+    next(err);
+  }
+};
 
 exports.getStudents = async (req, res, next) => {
   const queries = req.query;

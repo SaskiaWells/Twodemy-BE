@@ -1,6 +1,5 @@
 const connectionPool = require("../../db/connection");
 
-
 exports.checkFieldExists = async (modelName, query) => {
   const Model = connectionPool.model(modelName);
 
@@ -76,4 +75,61 @@ exports.handleSort = (queries) => {
   }
 
   return sortOptions;
+};
+
+exports.validateFields = (object) => {
+  const whiteList = [
+    "userName",
+    "firstName",
+    "lastName",
+    "email",
+    "password",
+    "profilePicture",
+    "languages",
+    "calendar",
+    "topicsToLearn",
+    "aboutMe",
+    "courses",
+    "isPremium",
+    "articles",
+    "rating",
+    "qualifications",
+    "website",
+    "reviews",
+  ];
+
+  const extraKeys = Object.keys(object).filter(
+    (key) => !whiteList.includes(key)
+  );
+
+  if (extraKeys.length > 0) {
+    return Promise.reject({
+      status: 404,
+      msg: `Invalid fields found: ${extraKeys.join(", ")}`,
+    });
+  }
+
+  return;
+};
+
+exports.buildPatchTeacherQuery = (fields) => {
+  const patchTeacherLookup = {
+    isPremium: "teacher.isPremium",
+    rating: "teacher.rating",
+    qualifications: "teacher.qualifications",
+    website: "teacher.website",
+    courses: "teacher.courses",
+    articles: "teacher.articles",
+    reviews: "teachersRouter.reviews",
+  };
+  const newFields = {};
+
+  for (const key in fields) {
+    if (patchTeacherLookup[key]) {
+      const mappedKey = patchTeacherLookup[key];
+      newFields[mappedKey] = fields[key];
+    }
+  }
+
+  return newFields;
 };

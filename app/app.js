@@ -7,9 +7,11 @@ const {
   catchAllError,
 } = require("./utils/errorHandling");
 const apiRouter = require("./routers/apiRouter");
+const mongoSanitize = require("express-mongo-sanitize");
 
 const app = express();
 app.use(express.json());
+app.use(mongoSanitize());
 
 app.use("/api", apiRouter);
 
