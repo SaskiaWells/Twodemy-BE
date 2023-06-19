@@ -590,5 +590,22 @@
     "exampleResponse": {
       "message": "User deleted successfully"
     }
+  },
+
+  "GET /api/courses/categories": {
+    "description": "serves an array of all course categories",
+    "exampleResponse": [
+      "cooking",
+      "lifestyle",
+      "music",
+      "art",
+      "science",
+      "maths",
+      "english",
+      "history",
+      "geography",
+      "languages",
+      "other"
+    ]
   }
 }

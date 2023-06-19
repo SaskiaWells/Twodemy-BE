@@ -35,3 +35,13 @@ exports.fetchCourses = async (queries) => {
 
   return courses;
 };
+
+exports.fetchCourseCategories = async () => {
+  console.log("hello model")
+
+  const User = connectionPool.model("User", userSchema);
+
+  const distinctCourses = await User.distinct('teacher.courses.courseCategory')
+  return distinctCourses
+
+}

@@ -1,4 +1,4 @@
-const { fetchCourses } = require("../models/courses.models");
+const { fetchCourses, fetchCourseCategories } = require("../models/courses.models");
 
 exports.getCourses = async (req, res, next) => {
   const queries = req.query;
@@ -10,3 +10,13 @@ exports.getCourses = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getCourseCategories = async (req, res, next) => {
+console.log("hello controller")
+  try {
+    const categories = await fetchCourseCategories();
+    res.status(200).send({ categories });
+  } catch (err) {
+    next(err);
+  }
+}
