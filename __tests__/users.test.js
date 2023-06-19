@@ -229,7 +229,7 @@ describe("/api/users", () => {
         expect(typeof newStudent._id).toBe("string");
       });
   });			
-  test.only("should delete student", async () => {
+  test("should delete student", async () => {
     await request(app)
       .delete("/api/users/648ac42475c58ca8fbe8b6d7")
       .expect(204);
@@ -239,7 +239,7 @@ describe("/api/users", () => {
     expect(response.status).toBe(404);
     expect(response.body.msg).toBe("User not found");
   });
-  test.only("should delete teacher", async () => {
+  test("should delete teacher", async () => {
     await request(app)
       .delete("/api/users/648ac42475c58ca8fbe8b6db")
       .expect(204);
@@ -249,14 +249,14 @@ describe("/api/users", () => {
     expect(response.status).toBe(404);
     expect(response.body.msg).toBe("User not found");
   });
-  test.only("should throw an error if invalid username is given", async () => {
+  test("should throw an error if invalid username is given", async () => {
     const nonExistentId = new mongoose.Types.ObjectId();
     const response = await request(app)
       .delete(`/api/users/${nonExistentId}`)
       .expect(404);
     expect(response.body.msg).toBe("User not found");
   });
-  test.only("should throw an error if invalid username is given", async () => {
+  test("should throw an error if invalid username is given", async () => {
     const nonExistentId = new mongoose.Types.ObjectId();
     const response = await request(app)
       .delete(`/api/users/${nonExistentId}1`)
@@ -728,7 +728,7 @@ describe("/api/users/teachers/:_id", () => {
   });
   // this test is commented out to remove the console log from the final error handling -- the sanitation does work and this can be uncommented to demonstrate it.
 
-  /*  test.only("should remove dangerous characters", () => {
+  /*  test("should remove dangerous characters", () => {
     return request(app)
       .patch("/api/users/teachers/648ac42475c58ca8fbe8b6db")
       .expect(500)
