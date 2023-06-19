@@ -146,6 +146,9 @@ const users = [
 		teacher: {
 			courses: [
 				{
+					_id: "648ac42475c58ca8fbe8b6ff",
+					// here is Course test id
+					_id : "649021d2723d2de51b0cbd91",
 					courseName: "advanced waffle",
 					courseCategory: "cooking",
 					hourlyRate: 1,

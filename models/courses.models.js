@@ -3,6 +3,7 @@ const {
   buildQuery,
   handleSort,
 } = require("../app/utils/utils");
+const mongoose = require("mongoose");
 const connectionPool = require("../db/connection");
 const userSchema = require("../db/seedData/schemas/userSchema");
 
@@ -34,6 +35,28 @@ exports.fetchCourses = async (queries) => {
     .flat();
 
   return courses;
+};
+
+exports.fetchCourseById = async (params) => {
+  const courseId = params._id;
+
+  const User = connectionPool.model("User", userSchema);
+
+  const course = await User.aggregate([
+    {$unwind: "$teacher"},
+    {
+      $match: {
+        "teacher.courses._id": new mongoose.Types.ObjectId(courseId),
+      },
+    },
+    { $project: {"teacher.courses" : 1} }
+  ]);
+
+  if(course[0]) {
+    return course[0].teacher.courses[0];
+  } else {
+    return Promise.reject({ status: 404, msg: "Course not found" })
+  }
 };
 
 exports.fetchCourseCategories = async () => {
