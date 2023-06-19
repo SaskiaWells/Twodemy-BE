@@ -54,3 +54,41 @@ exports.updateArticleComments = async (_id, comment_id, comment) => {
 
   return updatedComment
 }
+
+exports.sendComment = async (comment, _id) => {
+  const User = connectionPool.model("User", userSchema);
+
+  if (typeof comment.comment_body !== 'string') {
+    return Promise.reject({ status: 400, msg: "Invalid field type" })
+  }
+
+const newUser = await User.findOneAndUpdate(
+    { "teacher.articles._id": new mongoose.Types.ObjectId(_id) },
+    { $push: { "teacher.articles.$[].comments": comment } },
+   { new: true })
+  
+  if (!newUser) {
+    return Promise.reject({ status: 404, msg: "Article does not exist" });
+  }
+  
+  const result = await User.aggregate([
+    { $unwind: "$teacher.articles" },
+    {
+      $match: {
+        "teacher.articles._id": new mongoose.Types.ObjectId(_id),
+      },
+    },
+    {
+      $project: {
+        lastComment: { $arrayElemAt: ["$teacher.articles.comments", -1] },
+      },
+    },
+  ]);
+
+  
+  
+  return result[0].lastComment;
+
+
+
+}

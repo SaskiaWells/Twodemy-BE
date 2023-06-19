@@ -1,3 +1,4 @@
+const { createTestScheduler } = require("jest");
 const connectionPool = require("../../db/connection");
 
 exports.checkFieldExists = async (modelName, query) => {
@@ -135,3 +136,18 @@ exports.buildPatchTeacherQuery = (fields) => {
 
   return newFields;
 };
+
+exports.validateComment = (req, res, next) => { 
+  const requiredKeys = ["comment_body", 'created_by'];
+
+  const missingKeys = requiredKeys.filter((key) => !req.body.hasOwnProperty(key));
+
+  if (missingKeys.length > 0) {
+    return next({
+      status: 400,
+      msg: `Missing required fields: ${missingKeys.join(", ")}`,
+    });
+  }
+  next();
+
+}
