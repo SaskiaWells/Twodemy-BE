@@ -14,7 +14,7 @@ describe("/api/articles/:_id/comments", () => {
             .get("/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments")
             .expect(200)
             .then((response) => {
-                response.body.comments.forEach((comment) => {
+              response.body.comments.forEach((comment) => {
                     expect(typeof comment._id).toBe("string");
                     expect(typeof comment.comment_body).toBe("string");
                     expect(typeof comment.created_by).toBe("string");
@@ -28,10 +28,12 @@ describe("/api/articles/:_id/comments", () => {
         return request(app)
           .get("/api/users/articles/648c66086f2a6b6cd84be886/comments")
           .expect(404)
-            .then((response) => {
+          .then((response) => {
+              
               expect(response.body.msg).toBe("No comments available");
             });
-          });
+    });
+  
 });
     
 describe("/api/articles/:_id/comments/:comment_id", () => {

@@ -12,7 +12,7 @@ exports.getCourses = async (req, res, next) => {
 };
 
 exports.getCourseCategories = async (req, res, next) => {
-console.log("hello controller")
+
   try {
     const categories = await fetchCourseCategories();
     res.status(200).send({ categories });

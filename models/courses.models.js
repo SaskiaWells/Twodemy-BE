@@ -37,7 +37,7 @@ exports.fetchCourses = async (queries) => {
 };
 
 exports.fetchCourseCategories = async () => {
-  console.log("hello model")
+
 
   const User = connectionPool.model("User", userSchema);
 
