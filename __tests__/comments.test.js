@@ -32,6 +32,47 @@ describe("/api/articles/:_id/comments", () => {
               expect(response.body.msg).toBe("No comments available");
             });
           });
-    });
-
+});
+    
+describe("/api/articles/:_id/comments/:comment_id", () => {
+  test('PATCH status 200, should patch an comment of the given user', () => {
+    return request(app)
+      .patch('/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments/6490232f9f9d95ee1fe49391')
+      .expect(200)
+      .send({ comment_body: 'Nice article'})
+      .then((response) => { 
+        expect(response.body.Newcomment.comment_body).toBe('Nice article')
+        expect(response.body.Newcomment.created_by).toBe('Emmy')
+      })
+  })
+  test('PATCH status 404, should return an error when you try to patch a comment that does not exist', () => {
+    return request(app)
+      .patch('/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments/6490232f9f9d95ee1fe49392')
+      .expect(404)
+      .send({ comment_body: 'Nice article'})
+      .then((response) => { 
+        expect(response.body.msg).toBe('Comment does not exist')
+      })
+  }
+  )
+  test('PATCH status 400, should return an error when you try to patch a comment with an invalid body', () => {
+    return request(app)
+      .patch('/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments/6490232f9f9d95ee1fe49391')
+      .expect(400)
+      .send({ comment_body: 1234 })
+      .then((response) => {
+        expect(response.body.msg).toBe('Invalid field type')
+      }
+      )
+  })
+  test('PATCH status 404, should return an error when you try to patch a field that doesnt exist', () => {
+    return request(app)
+      .patch('/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments/6490232f9f9d95ee1fe49391')
+      .expect(404)
+      .send({ comment_body: 'Nice article', comment_body2: 'Nice article' })
+      .then((response) => {
+        expect(response.body.msg).toBe('Invalid fields found: comment_body2')
+      })
+  })
+})
 
