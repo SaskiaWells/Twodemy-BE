@@ -46,6 +46,39 @@ describe("/api/articles/:_id/comments", () => {
       }
       )
   })
+  test("POST Status 400 - returns an error when you try to post a comment with an invalid body", () => {
+    return request(app)
+      .post("/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments")
+      .send({ comment_body: 1234, created_by: "Emmy" })
+      .expect(400)
+      .then((response) => {
+        expect(response.body.msg).toBe('Invalid field type')
+      }
+      )
+  }
+  )
+  test("POST Status 404 - returns an error when you try to post a comment to an article that does not exist", () => {
+    return request(app)
+      .post("/api/users/articles/648c66086f2a6b6cd84be886/comments")
+      .send({ comment_body: "Nice article", created_by: "Emmy" })
+      .expect(404)
+      .then((response) => {
+        expect(response.body.msg).toBe('Article does not exist')
+      }
+      )
+  }
+  )
+  test('Post - status 400, should return erro when you hvent filled in the required fields', () => {
+    return request(app)
+      .post('/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments')
+      .send({ comment_body: 'Nice article' })
+      .expect(400)
+      .then((response) => {
+        expect(response.body.msg).toBe("Missing required fields: created_by");
+      }
+      )
+  }
+  )
   
 });
     

@@ -29,7 +29,7 @@ exports.postComment = async (req, res, next) => {
 
 	const comment = req.body;
 	const { _id } = req.params;
-	console.log('comment controller', comment);
+
 
 	try { 
 		const Newcomment = await sendComment(comment, _id);

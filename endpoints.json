@@ -631,5 +631,23 @@
       "created_at": "2023-06-19T15:23:18.215Z",
       "votes": []
     }
-  }
+  },
+
+  "POST /api/:article_id/comments": {
+    "description": "Adds a comment to an article",
+    "sent": {
+      "comment_body": "I love this article",
+      "created_by": "Emmy"
+    },
+    "exampleResponse": {
+      "comment_body": "I love this article",
+      "created_by": "Emmy",
+      "total_votes": 0,
+      "_id": "649072e65ee8d195ad0abd66",
+      "created_at": "2023-06-19T15:23:18.215Z",
+      "votes": []
+    }
+  },
+
+
 }
