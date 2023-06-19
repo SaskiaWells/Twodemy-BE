@@ -65,7 +65,6 @@ exports.fetchCourseCategories = async () => {
   const User = connectionPool.model("User", userSchema);
 
   const distinctCourses = await User.distinct('teacher.courses.courseCategory')
-  console.log(distinctCourses)
   return distinctCourses
 
 }

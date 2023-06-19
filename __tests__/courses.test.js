@@ -153,7 +153,7 @@ describe("/api/users/courses/:_id", () => {
 	});
 });
 
-describe.only("/api/users/courses/categories", () => { 
+describe("/api/users/courses/categories", () => { 
   test('GET Status 200 - returns an array of all cousre categories', () => {
     return request(app)
     .get('/api/users/courses/categories')

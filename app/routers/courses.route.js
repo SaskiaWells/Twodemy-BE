@@ -3,7 +3,7 @@ const { getCourses, getCoursesById, getCourseCategories } = require("../../contr
 const coursesRouter = require("express").Router();
 
 coursesRouter.route("/").get(getCourses);
-coursesRouter.route("/:_id").get(getCoursesById);
 coursesRouter.route("/categories").get(getCourseCategories);
+coursesRouter.route("/:_id").get(getCoursesById);
 
 module.exports = coursesRouter;

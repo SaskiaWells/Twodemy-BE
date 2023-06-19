@@ -631,5 +631,22 @@
       "created_at": "2023-06-19T15:23:18.215Z",
       "votes": []
     }
+  }, 
+  "DELETE /api/users/article/:id": {
+    "description": "Deletes an article with the specified ID"
+  },
+  "GET /api/users/courses/:id" : {
+    "description" : "returns an object containing the course data",
+    "queries" : [],
+    "exampleResponse" : {
+      "courseName": "advanced waffle",
+      "courseCategory": "cooking",
+      "hourlyRate": 1,
+      "courseImage": "https://media.istockphoto.com/id/185266029/photo/waffles-with-fruit-and-maple-syrup-on-a-marble-counter.jpg?s=612x612&w=0&k=20&c=YkBBzuSLisdHiECgS_NHN6gOyOMN6exADFk-RIlfKtI=",
+      "rating": 1,
+      "description": "this waffle is very tasty but it talks too much",
+      "discountMultiplier": 1,
+      "_id": "649021d2723d2de51b0cbd91"
+    }
   }
 }
