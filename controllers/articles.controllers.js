@@ -1,6 +1,7 @@
 const {
 	fetchArticles,
 	fetchArticleById,
+	removeArticleById,
 } = require("../models/articles.models");
 
 exports.getArticles = async (req, res, next) => {
@@ -24,3 +25,15 @@ exports.getArticleById = async (req, res, next) => {
 		next(err);
 	}
 };
+
+exports.deleteArticleById = async (req, res, next) => {
+	
+	const { _id } = req.params;
+	try {
+		await removeArticleById(_id);
+		res.status(204).send();
+	  } catch (err) {
+		next(err);
+	  };
+
+}

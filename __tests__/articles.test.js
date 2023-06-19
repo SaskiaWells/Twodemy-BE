@@ -3,6 +3,7 @@ const app = require("../app/app.js");
 const connection = require("../db/connection.js");
 const seed = require("../db/seeds/seed.js");
 const testData = require("../db/seedData/testData/users.js");
+const mongoose  = require("mongoose");
 
 beforeEach(() => seed(testData));
 
@@ -251,4 +252,28 @@ describe("/api/users/articles/:_id", () => {
 				expect(response.text).toBe('{"msg":"Invalid ID"}');
 			});
 	});
+	test(" DELETE - should delete article", async () => {
+		await request(app)
+		  .delete("/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e")
+		  .expect(204);
+		const response = await request(app).get(
+		  "/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e"
+		);
+		expect(response.status).toBe(404);
+		expect(response.body.msg).toBe("Article not found");
+	  });
+	test(" DELETE - should throw an invalid artiel id error if invalid id is passed", async () => {
+		const nonExistentId = new mongoose.Types.ObjectId();
+    	const response = await request(app)
+      	.delete(`/api/users/articles/${nonExistentId}1`)
+      	.expect(400);
+    	expect(response.body.msg).toBe("Invalid article ID");
+	  });
+	  test("should throw an article not found error if invalid username is given", async () => {
+		const nonExistentId = new mongoose.Types.ObjectId();
+		const response = await request(app)
+		  .delete(`/api/users/articles/${nonExistentId}`)
+		  .expect(404);
+		expect(response.body.msg).toBe("Article not found");
+	  });
 });
