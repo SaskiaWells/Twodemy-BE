@@ -40,8 +40,8 @@ describe("/api", () => {
 					true
 				);
 				expect(endpoints.hasOwnProperty("DELETE /api/users/:id")).toBe(true);
-				expect(endpoints.hasOwnProperty("DELETE /api/users/article/:id")).toBe(true);
-				expect(endpoints.hasOwnProperty("GET /api/users/courses/:id")).toBe(true)
+				expect(endpoints.hasOwnProperty("DELETE /api/users/article/:_id")).toBe(true);
+				expect(endpoints.hasOwnProperty("GET /api/users/courses/:course_id")).toBe(true)
 			});
 	});
 });

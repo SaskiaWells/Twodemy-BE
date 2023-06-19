@@ -114,10 +114,9 @@ describe("/api/users/courses", () => {
         });
       });
   });
-// These are bens tests  
 });
 
-describe("/api/users/courses/:_id", () => {
+describe("/api/users/courses/:course_id", () => {
 	test("GET Status 200 - returns a course object whose ID matches the passed :_id parameter", () => {
 		return request(app)
 			.get("/api/users/courses/649021d2723d2de51b0cbd91")

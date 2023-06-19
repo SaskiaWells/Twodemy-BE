@@ -4,6 +4,6 @@ const coursesRouter = require("express").Router();
 
 coursesRouter.route("/").get(getCourses);
 coursesRouter.route("/categories").get(getCourseCategories);
-coursesRouter.route("/:_id").get(getCoursesById);
+coursesRouter.route("/:course_id").get(getCoursesById);
 
 module.exports = coursesRouter;

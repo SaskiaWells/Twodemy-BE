@@ -38,7 +38,7 @@ exports.fetchCourses = async (queries) => {
 };
 
 exports.fetchCourseById = async (params) => {
-  const courseId = params._id;
+  const courseId = params.course_id;
 
   const User = connectionPool.model("User", userSchema);
 

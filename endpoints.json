@@ -632,10 +632,10 @@
       "votes": []
     }
   }, 
-  "DELETE /api/users/article/:id": {
+  "DELETE /api/users/article/:_id": {
     "description": "Deletes an article with the specified ID"
   },
-  "GET /api/users/courses/:id" : {
+  "GET /api/users/courses/:course_id" : {
     "description" : "returns an object containing the course data",
     "queries" : [],
     "exampleResponse" : {
