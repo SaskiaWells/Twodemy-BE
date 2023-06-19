@@ -7,7 +7,7 @@ const teachersRouter = require("./teachers.route");
 const { validateUser } = require("../utils/validateStudents");
 const { postUser } = require("../../controllers/students.controllers");
 
-usersRouter.get("/", getUsers).post(validateUser, postUser);
+usersRouter.route("/").get(getUsers).post(validateUser, postUser);
 usersRouter.use("/students", studentsRouter);
 usersRouter.use("/teachers", teachersRouter);
 usersRouter.use("/courses", coursesRouter);

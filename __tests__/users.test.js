@@ -47,20 +47,20 @@ describe("/api/users", () => {
         ],
       })
       .then((response) => {
-        const { newUser } = response.body;
-        expect(newUser.userName).toBe("Fion666");
-        expect(newUser.firstName).toBe("Karlie");
-        expect(newUser.lastName).toBe("Guan");
-        expect(newUser.email).toBe("noobiefion@gmail.com");
-        expect(newUser.password).toBe("iamnotNoobie!");
-        expect(newUser.profilePicture).toBe(
+        const { newStudent } = response.body;
+        expect(newStudent.userName).toBe("Fion666");
+        expect(newStudent.firstName).toBe("Karlie");
+        expect(newStudent.lastName).toBe("Guan");
+        expect(newStudent.email).toBe("noobiefion@gmail.com");
+        expect(newStudent.password).toBe("iamnotNoobie!");
+        expect(newStudent.profilePicture).toBe(
           "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr"
         );
-        expect(newUser.languages[0].language).toBe("English");
-        expect(newUser.languages[0].fluency).toBe("Fluent");
-        expect(newUser.topicsToLearn).toEqual([]);
-        expect(newUser.isTeacher).toBe(false);
-        expect(typeof newUser._id).toBe("string");
+        expect(newStudent.languages[0].language).toBe("English");
+        expect(newStudent.languages[0].fluency).toBe("Fluent");
+        expect(newStudent.topicsToLearn).toEqual([]);
+        expect(newStudent.isTeacher).toBe(false);
+        expect(typeof newStudent._id).toBe("string");
       });
   });
   test("POST - status: 404 - return err msg when missing an reqired field", () => {
@@ -113,6 +113,82 @@ describe("/api/users", () => {
         });
       });
   });
+	test("POST - status: 400 - return err msg when userName is not unique", () => {	
+		return request(app)
+			.post("/api/users")
+			.expect(400)
+			.send({ 
+        userName: "Emmy",
+        firstName: "Karlie",
+        lastName: "Guan",
+        password: "iamnotNoobie!",
+        email: "hello@gmail.com",
+        profilePicture:
+          "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr",
+        languages: [
+          {
+            language: "English",
+            fluency: "Fluent",
+          },
+        ],
+        topicsToLearn: [{ subject: "Maths", proficiency: "Prodigy" }],
+			})
+			.then((response) => {
+				const body = response.body;	
+				expect(body).toEqual({ msg: "Username already exists" });
+			});
+	});
+
+	test("POST - status: 201 - adds a new user which is a teacher and responds with newly created teacher", () => {
+		return request(app)
+			.post("/api/users")
+			.expect(201)
+			.send({
+				userName: "Fion666",
+				firstName: "Karlie",
+				lastName: "Guan",
+				password: "iamnotNoobie!",
+				email: "hello@gmail.com",
+				profilePicture:
+					"https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr",
+				languages: [
+					{
+						language: "English",
+						fluency: "Fluent",
+					},
+				],
+				isTeacher: true,
+				teacher: {
+      courses: [
+        {
+          courseName: "survive outside",
+          courseCategory: "cooking",
+          hourlyRate: 10,
+          courseImage:
+            "https://cdn.shopify.com/s/files/1/1583/5739/files/blog-hunter_large.jpg?v=1483641733",
+          rating: 4.7,
+          description: "understand the basics of the domestic cat's diet",
+        },
+					]
+				},
+			})
+			.then((response) => {
+				const { newStudent } = response.body;
+				expect(newStudent.userName).toBe("Fion666");
+				expect(newStudent.firstName).toBe("Karlie");
+				expect(newStudent.lastName).toBe("Guan");
+				expect(newStudent.email).toBe("hello@gmail.com");
+				expect(newStudent.password).toBe("iamnotNoobie!");
+				expect(newStudent.profilePicture).toBe(
+					"https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr"
+				);
+				expect(newStudent.languages[0].language).toBe("English");
+				expect(newStudent.languages[0].fluency).toBe("Fluent");
+				expect(newStudent.isTeacher).toBe(true);
+				expect(typeof newStudent._id).toBe("string");
+				expect(newStudent.teacher.courses[0].courseName).toBe("survive outside");
+			});
+	});
 
   test("POST - status: 201 - adds a new User and responds with newly created User when submitting both required fields and not required fields", () => {
     return request(app)
@@ -135,21 +211,21 @@ describe("/api/users", () => {
         topicsToLearn: [{ subject: "Maths", proficiency: "Prodigy" }],
       })
       .then((response) => {
-        const { newUser } = response.body;
-        expect(newUser.userName).toBe("Fion666");
-        expect(newUser.firstName).toBe("Karlie");
-        expect(newUser.lastName).toBe("Guan");
-        expect(newUser.email).toBe("hello@gmail.com");
-        expect(newUser.password).toBe("iamnotNoobie!");
-        expect(newUser.profilePicture).toBe(
+        const { newStudent } = response.body;
+        expect(newStudent.userName).toBe("Fion666");
+        expect(newStudent.firstName).toBe("Karlie");
+        expect(newStudent.lastName).toBe("Guan");
+        expect(newStudent.email).toBe("hello@gmail.com");
+        expect(newStudent.password).toBe("iamnotNoobie!");
+        expect(newStudent.profilePicture).toBe(
           "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr"
         );
-        expect(newUser.languages[0].language).toBe("English");
-        expect(newUser.languages[0].fluency).toBe("Fluent");
-        expect(newUser.topicsToLearn[0].subject).toBe("Maths");
-        expect(newUser.topicsToLearn[0].proficiency).toBe("Prodigy");
-        expect(newUser.isTeacher).toBe(false);
-        expect(typeof newUser._id).toBe("string");
+        expect(newStudent.languages[0].language).toBe("English");
+        expect(newStudent.languages[0].fluency).toBe("Fluent");
+        expect(newStudent.topicsToLearn[0].subject).toBe("Maths");
+        expect(newStudent.topicsToLearn[0].proficiency).toBe("Prodigy");
+        expect(newStudent.isTeacher).toBe(false);
+        expect(typeof newStudent._id).toBe("string");
       });
   });			
 });

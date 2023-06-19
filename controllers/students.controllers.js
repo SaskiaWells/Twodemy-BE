@@ -10,19 +10,24 @@ exports.getStudents = async (req, res, next) => {
   try {
     const students = await fetchStudents(queries);
     res.status(200).send({ students });
-  } catch (err) {
+  }
+  catch (err) {
     next(err);
   }
 };
 
 exports.postUser = async (req, res, next) => {
   const body = req.body;
-  consoe.log('controller');
+  
   try {
     newStudent = await createUser(body);
-    res.status(201).send({ newUser });
+    res.status(201).send({ newStudent });
   } catch (err) {
-    next(err);
+    if(err.code === 11000) {
+      res.status(400).send({ msg: "Username already exists" });
+    } else {
+      next(err);
+    }
   }
 };
 
