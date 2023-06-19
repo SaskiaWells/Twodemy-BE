@@ -33,6 +33,19 @@ describe("/api/articles/:_id/comments", () => {
               expect(response.body.msg).toBe("No comments available");
             });
     });
+  test("POST Status 201 - adds a new comment to the article", () => {
+    return request(app)
+      .post("/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments")
+      .send({ comment_body: "Nice article", created_by: "Emmy" })
+      .expect(201)
+      .then((response) => {
+        expect(response.body.Newcomment.comment_body).toBe('Nice article')
+        expect(response.body.Newcomment.created_by).toBe('Emmy')
+        expect(response.body.Newcomment.votes).toEqual([])
+        expect(response.body.Newcomment.total_votes).toBe(0)
+      }
+      )
+  })
   
 });
     

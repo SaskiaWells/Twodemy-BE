@@ -54,3 +54,18 @@ exports.updateArticleComments = async (_id, comment_id, comment) => {
 
   return updatedComment
 }
+
+exports.sendComment = async (comment, _id) => {
+  const User = connectionPool.model("User", userSchema);
+  console.log('comment model', comment);
+
+  const newComment = await User.findOneAndUpdate(
+    { "teacher.articles._id": new mongoose.Types.ObjectId(_id) },
+    { $push: { "teacher.articles.$[].comments": comment } },
+    { new: true })
+  
+  console.log('newComment', newComment.teacher.articles);
+
+
+
+}
