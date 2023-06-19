@@ -19,11 +19,11 @@ exports.fetchStudents = async (queries) => {
   return students;
 };
 
-exports.createStudent = async (student) => {
-  const User = connectionPool.model("User", userSchema);
-  const newStudent = new User(student);
-  await newStudent.save();
-  return newStudent;
+exports.createUser = async (student) => {
+	const User = connectionPool.model("User", userSchema);
+	const newStudent = new User(student);
+	await newStudent.save();
+	return newStudent;
 };
 
 exports.fetchStudentById = async (params) => {

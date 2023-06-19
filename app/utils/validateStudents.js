@@ -1,4 +1,4 @@
-exports.validateStudent = (req, res, next) => {
+exports.validateUser = (req, res, next) => {
   const requiredFields = [
     "userName",
     "firstName",

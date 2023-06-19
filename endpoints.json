@@ -36,7 +36,11 @@
             }
           ],
           "rating": 4,
+<<<<<<< HEAD
           "qualifications": "some",
+=======
+          "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+>>>>>>> 4a0027e330fd11279ea0f8d97ba0369a0aea7877
           "website": "www.teacher.com",
           "reviews": [
             {
@@ -76,7 +80,11 @@
             }
           ],
           "rating": 4,
+<<<<<<< HEAD
           "qualifications": "some",
+=======
+          "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+>>>>>>> 4a0027e330fd11279ea0f8d97ba0369a0aea7877
           "website": "www.teacher.com",
           "reviews": [
             {
@@ -196,7 +204,11 @@
           "courses": ["Array"],
           "articles": ["Array"],
           "rating": 1,
+<<<<<<< HEAD
           "qualifications": "none",
+=======
+          "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+>>>>>>> 4a0027e330fd11279ea0f8d97ba0369a0aea7877
           "website": "www.website.com",
           "reviews": ["Array"],
           "isPremium": false
@@ -220,7 +232,11 @@
           "courses": ["Array"],
           "articles": ["Array"],
           "rating": 1,
+<<<<<<< HEAD
           "qualifications": "none",
+=======
+          "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+>>>>>>> 4a0027e330fd11279ea0f8d97ba0369a0aea7877
           "website": "www.website.com",
           "reviews": ["Array"],
           "isPremium": false
@@ -281,7 +297,11 @@
         "courses": ["Array of courses"],
         "articles": ["Array of articles"],
         "rating": 5,
+<<<<<<< HEAD
         "qualifications": "All the Quals",
+=======
+        "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+>>>>>>> 4a0027e330fd11279ea0f8d97ba0369a0aea7877
         "website": "www.iamgoogle.com",
         "reviews": ["Array of reviews"]
       },
@@ -445,8 +465,12 @@
       "courseRating=0-5 (putting < OR > will serve matching range)",
       "discount=0-1(float)",
       "sortBy=cost|courseRating|discount",
+<<<<<<< HEAD
       "order=asc|desc (defaults to desc)",
       "courseList=true gives a list of all course categories with duplicates removed."
+=======
+      "order=asc|desc (defaults to desc)"
+>>>>>>> 4a0027e330fd11279ea0f8d97ba0369a0aea7877
     ],
     "exampleResponse": [
       {
@@ -485,5 +509,148 @@
       "votes": [],
       "article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
     }
+<<<<<<< HEAD
+=======
+  },
+  "PATCH /api/users/students/:id": {
+    "description": "Updates a student with the specified ID",
+    "sent": {
+      "notes": "the sent object must include at least one of the fields listed below, however it can include several, in any order. If fields that are not below are included there will be an error and nothing updated, otherwise all included fields will be updated. if updating a field that contains an array or object the new data must be appended to the existing array, unless the diesired result is to remove some of, or all of, the previous data.",
+      "userName": "newUser",
+      "firstName": "Davey",
+      "lastName": "Jones",
+      "email": "example@email.com",
+      "password": "examplePassword",
+      "profilePicture": "https://url.com/example-picture.jpg",
+      "languages": [
+        {
+          "language": "English",
+          "fluency": "Fluent"
+        }
+      ],
+      "aboutMe": "I am...",
+      "isTeacher": false,
+      "calendar": [],
+      "topicsToLearn": []
+    },
+    "exampleResponse": {
+      "_id": "an_ID",
+      "userName": "newUser",
+      "firstName": "Dave",
+      "lastName": "Jones",
+      "email": "example@email.com",
+      "password": "examplePassword",
+      "profilePicture": "https://url.com/example-picture.jpg",
+      "languages": [
+        {
+          "language": "English",
+          "fluency": "Fluent"
+        }
+      ],
+      "aboutMe": "I am...",
+      "isTeacher": false,
+      "teacher": {
+        "isPremium": true,
+        "courses": [],
+        "articles": [],
+        "reviews": []
+      },
+      "calendar": [],
+      "topicsToLearn": []
+    }
+  },
+
+  "PATCH /api/users/teachers/:id": {
+    "description": "Updates a teacher with the specified ID",
+    "sent": {
+      "notes": "the sent object must include at least one of the fields listed below, however it can include several, in any order. If fields that are not below are included there will be an error and nothing updated, otherwise all included fields will be updated. if updating a field that contains an array or object the new data must be appended to the existing array, unless the diesired result is to remove some of, or all of, the previous data.",
+      "_id": "648b25f44d1c922f8bdf0046",
+      "userName": "coolBoy420",
+      "firstName": "Jonathan",
+      "lastName": "Bean",
+      "email": "email@email.com",
+      "password": "Password1",
+      "profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+      "languages": [["Object"], ["Object"]],
+      "calendar": [["Object"]],
+      "topicsToLearn": [["Object"]],
+      "aboutMe": "I am a human (i think)",
+      "isTeacher": true,
+      "__v": 0,
+      "teacher": {
+        "courses": ["Array"],
+        "articles": ["Array"],
+        "rating": 1,
+        "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+        "website": "www.website.com",
+        "reviews": ["Array"],
+        "isPremium": false
+      }
+    },
+    "exampleResponse": {
+      "_id": "648b25f44d1c922f8bdf0046",
+      "userName": "coolBoy420",
+      "firstName": "Jonathan",
+      "lastName": "Bean",
+      "email": "email@email.com",
+      "password": "Password1",
+      "profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+      "languages": [["Object"], ["Object"]],
+      "calendar": [["Object"]],
+      "topicsToLearn": [["Object"]],
+      "aboutMe": "I am a human (i think)",
+      "isTeacher": true,
+      "__v": 0,
+      "teacher": {
+        "courses": ["Array"],
+        "articles": ["Array"],
+        "rating": 1,
+        "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+        "website": "www.website.com",
+        "reviews": ["Array"],
+        "isPremium": false
+      }
+    }
+  },
+  "DELETE /api/users/:id": {
+    "description": "Deletes a user with the specified ID",
+    "exampleResponse": {
+      "message": "User deleted successfully"
+    }
+  },
+
+  "GET /api/courses/categories": {
+    "description": "serves an array of all course categories",
+    "exampleResponse": [
+      "cooking",
+      "lifestyle",
+      "music",
+      "art",
+      "science",
+      "maths",
+      "english",
+      "history",
+      "geography",
+      "languages",
+      "other"
+    ]
+  },
+
+  "PATCH /api/:article_id/comments/:comment_id ":{
+    "description": "Updates a comment with the specified ID",
+    "sent": {"comment_body": "I love this article"}
+  },
+
+  "GET /api/:article_id/comments": {
+    "description": "serves an array of all comments for a given article",
+      "exampleResponse":   {
+      "comment_body": "I love this article",
+      "created_by": "Emmy",
+      "total_votes": 0,
+      "_id": "649072e65ee8d195ad0abd66",
+      "created_at": "2023-06-19T15:23:18.215Z",
+      "votes": []
+    }
+>>>>>>> 4a0027e330fd11279ea0f8d97ba0369a0aea7877
   }
 }

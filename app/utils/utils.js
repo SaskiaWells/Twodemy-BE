@@ -96,6 +96,8 @@ exports.validateFields = (object) => {
     "qualifications",
     "website",
     "reviews",
+    "isTeacher",
+    "comment_body",
   ];
 
   const extraKeys = Object.keys(object).filter(

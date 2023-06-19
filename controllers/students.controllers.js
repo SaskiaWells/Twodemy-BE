@@ -1,6 +1,6 @@
 const {
   fetchStudents,
-  createStudent,
+  createUser,
   fetchStudentById,
   patchStudent,
 } = require("../models/students.models");
@@ -22,18 +22,24 @@ exports.getStudents = async (req, res, next) => {
   try {
     const students = await fetchStudents(queries);
     res.status(200).send({ students });
-  } catch (err) {
+  }
+  catch (err) {
     next(err);
   }
 };
 
-exports.postStudent = async (req, res, next) => {
+exports.postUser = async (req, res, next) => {
   const body = req.body;
+  
   try {
-    newStudent = await createStudent(body);
+    newStudent = await createUser(body);
     res.status(201).send({ newStudent });
   } catch (err) {
-    next(err);
+    if(err.code === 11000) {
+      res.status(400).send({ msg: "Username already exists" });
+    } else {
+      next(err);
+    }
   }
 };
 

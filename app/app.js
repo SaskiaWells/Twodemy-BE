@@ -2,14 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const usersRouter = require("./routers/users.route");
 const {
-  handleInvalidId,
-  handleCustomError,
-  catchAllError,
+	handleInvalidId,
+	handleCustomError,
+	catchAllError,
 } = require("./utils/errorHandling");
 const apiRouter = require("./routers/apiRouter");
 const mongoSanitize = require("express-mongo-sanitize");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(mongoSanitize());
 
