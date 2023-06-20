@@ -114,8 +114,42 @@ describe("/api/users/courses", () => {
         });
       });
   });
+});
 
-  
+describe("/api/users/courses/:course_id", () => {
+	test("GET Status 200 - returns a course object whose ID matches the passed :_id parameter", () => {
+		return request(app)
+			.get("/api/users/courses/649021d2723d2de51b0cbd91")
+			.expect(200)
+			.then((response) => {
+				expect(Object.keys(response.body).length).toBe(1);
+				const course = response.body.course;
+				expect(typeof course._id).toBe("string");
+				expect(typeof course.courseName).toBe("string");
+				expect(typeof course.courseCategory).toBe("string");
+				expect(typeof course.hourlyRate).toBe("number");
+				expect(typeof course.courseImage).toBe("string");
+				expect(typeof course.rating).toBe("number");
+				expect(typeof course.description).toBe("string");
+				expect(course._id).toBe("649021d2723d2de51b0cbd91");
+			});
+	});
+  test("GET Status 404 - correctly handles error through middleware when the given _id doesn't exist", () => {
+		return request(app)
+			.get("/api/users/courses/648ac42475c58ca8fbe8b9fa")
+			.expect(404)
+			.then((response) => {
+				expect(response.text).toBe('{"msg":"Course not found"}');
+			});
+	});
+  test("GET Status 400 - correctly handles error through middleware when the given _id is invalid", () => {
+		return request(app)
+			.get("/api/users/courses/9948")
+			.expect(400)
+			.then((response) => {
+				expect(response.text).toBe('{"msg":"Invalid ID"}');
+			});
+	});
 });
 
 describe("/api/users/courses/categories", () => { 
