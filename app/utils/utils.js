@@ -22,7 +22,7 @@ exports.buildQuery = (queries) => {
     username: "userName",
     name: "firstName",
     surname: "lastName",
-    premium: "isPremium",
+    premium: "teacher.isPremium",
     course: "teacher.courses.courseCategory",
     cost: "teacher.courses.hourlyRate",
     courseRating: "teacher.courses.rating",

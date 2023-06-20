@@ -14,6 +14,7 @@ exports.fetchTeachers = async (queries) => {
   };
 
   query = Object.assign(query, buildQuery(queries));
+  console.log(query);
   const sortBy = handleSort(queries);
 
   const User = connectionPool.model("User", userSchema);
