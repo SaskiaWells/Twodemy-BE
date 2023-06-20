@@ -1,4 +1,4 @@
-const { fetchArticleComments, updateArticleComments } = require("../models/comments.models");
+const { fetchArticleComments, updateArticleComments, sendComment } = require("../models/comments.models");
 
 exports.getArticleComments = async (req, res, next) => {
 	const { _id } = req.params;
@@ -25,3 +25,16 @@ exports.patchArticleComments = async (req, res, next) => {
 	}
 }
 
+exports.postComment = async (req, res, next) => {
+
+	const comment = req.body;
+	const { _id } = req.params;
+
+
+	try { 
+		const Newcomment = await sendComment(comment, _id);
+		res.status(201).send({ Newcomment });
+	} catch (err) {	
+		next(err);
+	}
+}

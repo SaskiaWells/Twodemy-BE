@@ -13,7 +13,7 @@ describe("/api", () => {
 				expect(typeof res.body).toBe("object");
 				const endpoints = res.body.endpoints;
 				const endpointKeys = Object.keys(endpoints);
-				expect(endpointKeys.length).toBe(17);
+				expect(endpointKeys.length).toBe(19);
 				expect(endpoints.hasOwnProperty("GET /api")).toBe(true);
 				expect(endpoints.hasOwnProperty("GET /api/users")).toBe(true);
 				expect(endpoints.hasOwnProperty("GET /api/users/students")).toBe(true);
@@ -40,6 +40,8 @@ describe("/api", () => {
 					true
 				);
 				expect(endpoints.hasOwnProperty("DELETE /api/users/:id")).toBe(true);
+				expect(endpoints.hasOwnProperty("DELETE /api/users/article/:_id")).toBe(true);
+				expect(endpoints.hasOwnProperty("GET /api/users/courses/:course_id")).toBe(true)
 			});
 	});
 });

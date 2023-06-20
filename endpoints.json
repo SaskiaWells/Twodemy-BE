@@ -1,625 +1,625 @@
 {
-  "GET /api": {
-    "description": "serves up a json representation of all the available endpoints of the api"
-  },
+	"GET /api": {
+		"description": "serves up a json representation of all the available endpoints of the api"
+	},
 
-  "GET /api/users": {
-    "description": "serves an array of objects for all users",
-    "queries": [],
-    "exampleResponse": [
-      {
-        "_id": "an_ID",
-        "userName": "I_teach_cool_things",
-        "firstName": "Saskia",
-        "lastName": "Wells",
-        "email": "emailemail@gmail.com",
-        "password": "securePassword",
-        "profilePicture": "https://m.media-amazon.com/images/I/71YElaLt6lL.jpg",
-        "languages": [
-          {
-            "language": "English",
-            "fluency": "I have spoken it my whole damn life"
-          }
-        ],
-        "aboutMe": "this is something about me",
-        "isTeacher": true,
-        "teacher": {
-          "isPremium": true,
-          "courses": [
-            {
-              "courseName": "How to be Saskia 101",
-              "courseCategory": "lifestyle",
-              "hourlyRate": 100,
-              "courseImage": "https://media.newyorker.com/photos/590968866552fa0be682f3d7/master/w_2560%2Cc_limit/110627_r21011_g2048.jpg",
-              "rating": 0,
-              "description": "If you are unfortunate enough to read this article I commend you"
-            }
-          ],
-          "rating": 4,
+	"GET /api/users": {
+		"description": "serves an array of objects for all users",
+		"queries": [],
+		"exampleResponse": [
+			{
+				"_id": "an_ID",
+				"userName": "I_teach_cool_things",
+				"firstName": "Saskia",
+				"lastName": "Wells",
+				"email": "emailemail@gmail.com",
+				"password": "securePassword",
+				"profilePicture": "https://m.media-amazon.com/images/I/71YElaLt6lL.jpg",
+				"languages": [
+					{
+						"language": "English",
+						"fluency": "I have spoken it my whole damn life"
+					}
+				],
+				"aboutMe": "this is something about me",
+				"isTeacher": true,
+				"teacher": {
+					"isPremium": true,
+					"courses": [
+						{
+							"courseName": "How to be Saskia 101",
+							"courseCategory": "lifestyle",
+							"hourlyRate": 100,
+							"courseImage": "https://media.newyorker.com/photos/590968866552fa0be682f3d7/master/w_2560%2Cc_limit/110627_r21011_g2048.jpg",
+							"rating": 0,
+							"description": "If you are unfortunate enough to read this article I commend you"
+						}
+					],
+					"rating": 4,
 
-          "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+					"qualifications": ["Bachelor's Degree", "Teaching Certification"],
 
-          "website": "www.teacher.com",
-          "reviews": [
-            {
-              "createdBy": "im_not_like_other_students",
-              "rating": 0,
-              "body": "Didn't get enough armpit scratches"
-            }
-          ]
-        }
-      },
-      {
-        "_id": "an_ID",
-        "userName": "I_teach_cool_things",
-        "firstName": "Saskia",
-        "lastName": "Wells",
-        "email": "emailemail@gmail.com",
-        "password": "securePassword",
-        "profilePicture": "https://m.media-amazon.com/images/I/71YElaLt6lL.jpg",
-        "languages": [
-          {
-            "language": "English",
-            "fluency": "I have spoken it my whole damn life"
-          }
-        ],
-        "aboutMe": "this is something about me",
-        "isTeacher": true,
-        "teacher": {
-          "isPremium": true,
-          "courses": [
-            {
-              "courseName": "How to be Saskia 101",
-              "courseCategory": "lifestyle",
-              "hourlyRate": 100,
-              "courseImage": "https://media.newyorker.com/photos/590968866552fa0be682f3d7/master/w_2560%2Cc_limit/110627_r21011_g2048.jpg",
-              "rating": 0,
-              "description": "If you are unfortunate enough to read this article I commend you"
-            }
-          ],
-          "rating": 4,
+					"website": "www.teacher.com",
+					"reviews": [
+						{
+							"createdBy": "im_not_like_other_students",
+							"rating": 0,
+							"body": "Didn't get enough armpit scratches"
+						}
+					]
+				}
+			},
+			{
+				"_id": "an_ID",
+				"userName": "I_teach_cool_things",
+				"firstName": "Saskia",
+				"lastName": "Wells",
+				"email": "emailemail@gmail.com",
+				"password": "securePassword",
+				"profilePicture": "https://m.media-amazon.com/images/I/71YElaLt6lL.jpg",
+				"languages": [
+					{
+						"language": "English",
+						"fluency": "I have spoken it my whole damn life"
+					}
+				],
+				"aboutMe": "this is something about me",
+				"isTeacher": true,
+				"teacher": {
+					"isPremium": true,
+					"courses": [
+						{
+							"courseName": "How to be Saskia 101",
+							"courseCategory": "lifestyle",
+							"hourlyRate": 100,
+							"courseImage": "https://media.newyorker.com/photos/590968866552fa0be682f3d7/master/w_2560%2Cc_limit/110627_r21011_g2048.jpg",
+							"rating": 0,
+							"description": "If you are unfortunate enough to read this article I commend you"
+						}
+					],
+					"rating": 4,
 
-          "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+					"qualifications": ["Bachelor's Degree", "Teaching Certification"],
 
-          "website": "www.teacher.com",
-          "reviews": [
-            {
-              "createdBy": "im_not_like_other_students",
-              "rating": 0,
-              "body": "Didn't get enough armpit scratches"
-            }
-          ]
-        }
-      }
-    ]
-  },
+					"website": "www.teacher.com",
+					"reviews": [
+						{
+							"createdBy": "im_not_like_other_students",
+							"rating": 0,
+							"body": "Didn't get enough armpit scratches"
+						}
+					]
+				}
+			}
+		]
+	},
 
-  "GET /api/users/students": {
-    "description": "serves an array of objects for all users who have listed topicsToLearn - i.e. active students",
-    "queries": [
-      "subject=:topicToLearn",
-      "proficiency=:proficiency at that topic(dropdown?)",
-      "langauges=:langauge",
-      "fluency=:fluency",
-      "username=:username",
-      "name=:firstName",
-      "surname=:lastName"
-    ],
-    "exampleResponse": [
-      {
-        "_id": "an_ID",
-        "userName": "LobotomyNow!",
-        "firstName": "Julius",
-        "lastName": "Apple",
-        "email": "email1@email.com",
-        "password": "Password1",
-        "profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
-        "languages": [
-          { "language": "English", "fluency": "Fluent" },
-          { "language": "Spanish", "fluency": "Fluent" },
-          { "language": "Esperanto", "fluency": "Native" }
-        ],
-        "calendar": [
-          {
-            "id": 1323232,
-            "text": "Apocalypse",
-            "start": "2023-10-01T11:30:00",
-            "end": "2023-10-01T14:30:00"
-          }
-        ],
-        "topicsToLearn": [
-          {
-            "subject": "cooking",
-            "proficiency": "advanced"
-          }
-        ]
-      },
-      {
-        "_id": "an_ID",
-        "userName": "LobotomyNow!",
-        "firstName": "Julius",
-        "lastName": "Apple",
-        "email": "email1@email.com",
-        "password": "Password1",
-        "profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
-        "languages": [
-          { "language": "English", "fluency": "Fluent" },
-          { "language": "Spanish", "fluency": "Fluent" },
-          { "language": "Esperanto", "fluency": "Native" }
-        ],
-        "calendar": [
-          {
-            "id": 1323232,
-            "text": "Apocalypse",
-            "start": "2023-10-01T11:30:00",
-            "end": "2023-10-01T14:30:00"
-          }
-        ],
-        "topicsToLearn": [
-          {
-            "subject": "cooking",
-            "proficiency": "advanced"
-          }
-        ]
-      }
-    ]
-  },
+	"GET /api/users/students": {
+		"description": "serves an array of objects for all users who have listed topicsToLearn - i.e. active students",
+		"queries": [
+			"subject=:topicToLearn",
+			"proficiency=:proficiency at that topic(dropdown?)",
+			"langauges=:langauge",
+			"fluency=:fluency",
+			"username=:username",
+			"name=:firstName",
+			"surname=:lastName"
+		],
+		"exampleResponse": [
+			{
+				"_id": "an_ID",
+				"userName": "LobotomyNow!",
+				"firstName": "Julius",
+				"lastName": "Apple",
+				"email": "email1@email.com",
+				"password": "Password1",
+				"profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+				"languages": [
+					{ "language": "English", "fluency": "Fluent" },
+					{ "language": "Spanish", "fluency": "Fluent" },
+					{ "language": "Esperanto", "fluency": "Native" }
+				],
+				"calendar": [
+					{
+						"id": 1323232,
+						"text": "Apocalypse",
+						"start": "2023-10-01T11:30:00",
+						"end": "2023-10-01T14:30:00"
+					}
+				],
+				"topicsToLearn": [
+					{
+						"subject": "cooking",
+						"proficiency": "advanced"
+					}
+				]
+			},
+			{
+				"_id": "an_ID",
+				"userName": "LobotomyNow!",
+				"firstName": "Julius",
+				"lastName": "Apple",
+				"email": "email1@email.com",
+				"password": "Password1",
+				"profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+				"languages": [
+					{ "language": "English", "fluency": "Fluent" },
+					{ "language": "Spanish", "fluency": "Fluent" },
+					{ "language": "Esperanto", "fluency": "Native" }
+				],
+				"calendar": [
+					{
+						"id": 1323232,
+						"text": "Apocalypse",
+						"start": "2023-10-01T11:30:00",
+						"end": "2023-10-01T14:30:00"
+					}
+				],
+				"topicsToLearn": [
+					{
+						"subject": "cooking",
+						"proficiency": "advanced"
+					}
+				]
+			}
+		]
+	},
 
-  "GET /api/users/teachers": {
-    "description": "serves an array of objects for all users who have isTeacher: true, ie. teachers!",
-    "queries": [
-      "qualifications=:qualification level(dropdown?)",
-      "course=:courseTaught",
-      "subject=:topicToLearn",
-      "proficiency=:proficiency at that topic(dropdown?)",
-      "langauges=:langauge",
-      "fluency=:fluency",
-      "username=:username",
-      "name=:firstName",
-      "surname=:lastName",
-      "premium=Boolean",
-      "sortBy=rating(teacher)",
-      "order=asc|desc(default desc)"
-    ],
-    "exampleResponse": [
-      {
-        "_id": "648b25f44d1c922f8bdf0046",
-        "userName": "coolBoy420",
-        "firstName": "Jonathan",
-        "lastName": "Bean",
-        "email": "email@email.com",
-        "password": "Password1",
-        "profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
-        "languages": [["Object"], ["Object"]],
-        "calendar": [["Object"]],
-        "topicsToLearn": [["Object"]],
-        "aboutMe": "I am a human (i think)",
-        "isTeacher": true,
-        "__v": 0,
-        "teacher": {
-          "courses": ["Array"],
-          "articles": ["Array"],
-          "rating": 1,
+	"GET /api/users/teachers": {
+		"description": "serves an array of objects for all users who have isTeacher: true, ie. teachers!",
+		"queries": [
+			"qualifications=:qualification level(dropdown?)",
+			"course=:courseTaught",
+			"subject=:topicToLearn",
+			"proficiency=:proficiency at that topic(dropdown?)",
+			"langauges=:langauge",
+			"fluency=:fluency",
+			"username=:username",
+			"name=:firstName",
+			"surname=:lastName",
+			"premium=Boolean",
+			"sortBy=rating(teacher)",
+			"order=asc|desc(default desc)"
+		],
+		"exampleResponse": [
+			{
+				"_id": "648b25f44d1c922f8bdf0046",
+				"userName": "coolBoy420",
+				"firstName": "Jonathan",
+				"lastName": "Bean",
+				"email": "email@email.com",
+				"password": "Password1",
+				"profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+				"languages": [["Object"], ["Object"]],
+				"calendar": [["Object"]],
+				"topicsToLearn": [["Object"]],
+				"aboutMe": "I am a human (i think)",
+				"isTeacher": true,
+				"__v": 0,
+				"teacher": {
+					"courses": ["Array"],
+					"articles": ["Array"],
+					"rating": 1,
 
-          "qualifications": ["Bachelor's Degree", "Teaching Certification"],
+					"qualifications": ["Bachelor's Degree", "Teaching Certification"],
 
-          "website": "www.website.com",
-          "reviews": ["Array"],
-          "isPremium": false
-        }
-      },
-      {
-        "_id": "648b25f44d1c922f8bdf0046",
-        "userName": "coolBoy420",
-        "firstName": "Jonathan",
-        "lastName": "Bean",
-        "email": "email@email.com",
-        "password": "Password1",
-        "profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
-        "languages": [["Object"], ["Object"]],
-        "calendar": [["Object"]],
-        "topicsToLearn": [["Object"]],
-        "aboutMe": "I am a human (i think)",
-        "isTeacher": true,
-        "__v": 0,
-        "teacher": {
-          "courses": ["Array"],
-          "articles": ["Array"],
-          "rating": 1,
-          "qualifications": ["Bachelor's Degree", "Teaching Certification"],
-          "website": "www.website.com",
-          "reviews": ["Array"],
-          "isPremium": false
-        }
-      }
-    ]
-  },
+					"website": "www.website.com",
+					"reviews": ["Array"],
+					"isPremium": false
+				}
+			},
+			{
+				"_id": "648b25f44d1c922f8bdf0046",
+				"userName": "coolBoy420",
+				"firstName": "Jonathan",
+				"lastName": "Bean",
+				"email": "email@email.com",
+				"password": "Password1",
+				"profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+				"languages": [["Object"], ["Object"]],
+				"calendar": [["Object"]],
+				"topicsToLearn": [["Object"]],
+				"aboutMe": "I am a human (i think)",
+				"isTeacher": true,
+				"__v": 0,
+				"teacher": {
+					"courses": ["Array"],
+					"articles": ["Array"],
+					"rating": 1,
+					"qualifications": ["Bachelor's Degree", "Teaching Certification"],
+					"website": "www.website.com",
+					"reviews": ["Array"],
+					"isPremium": false
+				}
+			}
+		]
+	},
 
-  "POST /api/users/students": {
-    "description": "Allows a new user to be created with student-level privelages",
-    "examplePostBody": {
-      "userName": "newUser",
-      "firstName": "Dave",
-      "lastName": "jones",
-      "email": "example@email.com",
-      "password": "examplePassword",
-      "profilePicture": "https://url.com/example-picture.jpg",
-      "languages": [
-        {
-          "language": "English",
-          "fluency": "Fluent"
-        }
-      ]
-    },
-    "exampleResponse": {
-      "_id": "an_ID",
-      "userName": "newUser",
-      "firstName": "Dave",
-      "lastName": "jones",
-      "email": "example@email.com",
-      "password": "examplePassword",
-      "profilePicture": "https://url.com/example-picture.jpg",
-      "languages": [
-        {
-          "language": "English",
-          "fluency": "Fluent"
-        }
-      ],
-      "aboutMe": "",
-      "isTeacher": false,
-      "teacher": {
-        "isPremium": true,
-        "courses": [],
-        "articles": [],
-        "reviews": []
-      },
-      "calendar": [],
-      "topicsToLearn": []
-    }
-  },
+	"POST /api/users/students": {
+		"description": "Allows a new user to be created with student-level privelages",
+		"examplePostBody": {
+			"userName": "newUser",
+			"firstName": "Dave",
+			"lastName": "jones",
+			"email": "example@email.com",
+			"password": "examplePassword",
+			"profilePicture": "https://url.com/example-picture.jpg",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent"
+				}
+			]
+		},
+		"exampleResponse": {
+			"_id": "an_ID",
+			"userName": "newUser",
+			"firstName": "Dave",
+			"lastName": "jones",
+			"email": "example@email.com",
+			"password": "examplePassword",
+			"profilePicture": "https://url.com/example-picture.jpg",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent"
+				}
+			],
+			"aboutMe": "",
+			"isTeacher": false,
+			"teacher": {
+				"isPremium": true,
+				"courses": [],
+				"articles": [],
+				"reviews": []
+			},
+			"calendar": [],
+			"topicsToLearn": []
+		}
+	},
 
-  "GET /api/users/teachers/:_id": {
-    "description": "returns the teacher user object matching the given ID parameter",
-    "queries": [],
-    "exampleResponse": {
-      "teacher": {
-        "isPremium": true,
-        "courses": ["Array of courses"],
-        "articles": ["Array of articles"],
-        "rating": 5,
-        "qualifications": ["Bachelor's Degree", "Teaching Certification"],
-        "website": "www.iamgoogle.com",
-        "reviews": ["Array of reviews"]
-      },
-      "_id": "648ac42475c58ca8fbe8b6db",
-      "userName": "MrTeacher",
-      "firstName": "Margin",
-      "lastName": "Bottom",
-      "email": "imateachersemail@gmail.com",
-      "password": "ThIsIsApAsSwOrD",
-      "profilePicture": "https://jappliedecologyblog.files.wordpress.com/2022/01/picture2-2.jpg?w=1200",
-      "languages": [
-        {
-          "language": "English",
-          "fluency": "Fluent",
-          "_id": "648ac42475c58ca8fbe8b6dc"
-        }
-      ],
-      "calendar": [
-        {
-          "id": "1.5995587458852127e+33",
-          "text": "Graduation",
-          "start": "2023-06-13T11:30:00",
-          "end": "2023-06-13T14:30:00",
-          "_id": "648ac42475c58ca8fbe8b6de"
-        }
-      ],
-      "topicsToLearn": [
-        {
-          "subject": "I know everything",
-          "proficiency": "Mongod",
-          "_id": "648ac42475c58ca8fbe8b6e0"
-        }
-      ],
-      "aboutMe": "Know it all",
-      "isTeacher": true
-    }
-  },
+	"GET /api/users/teachers/:_id": {
+		"description": "returns the teacher user object matching the given ID parameter",
+		"queries": [],
+		"exampleResponse": {
+			"teacher": {
+				"isPremium": true,
+				"courses": ["Array of courses"],
+				"articles": ["Array of articles"],
+				"rating": 5,
+				"qualifications": ["Bachelor's Degree", "Teaching Certification"],
+				"website": "www.iamgoogle.com",
+				"reviews": ["Array of reviews"]
+			},
+			"_id": "648ac42475c58ca8fbe8b6db",
+			"userName": "MrTeacher",
+			"firstName": "Margin",
+			"lastName": "Bottom",
+			"email": "imateachersemail@gmail.com",
+			"password": "ThIsIsApAsSwOrD",
+			"profilePicture": "https://jappliedecologyblog.files.wordpress.com/2022/01/picture2-2.jpg?w=1200",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent",
+					"_id": "648ac42475c58ca8fbe8b6dc"
+				}
+			],
+			"calendar": [
+				{
+					"id": "1.5995587458852127e+33",
+					"text": "Graduation",
+					"start": "2023-06-13T11:30:00",
+					"end": "2023-06-13T14:30:00",
+					"_id": "648ac42475c58ca8fbe8b6de"
+				}
+			],
+			"topicsToLearn": [
+				{
+					"subject": "I know everything",
+					"proficiency": "Mongod",
+					"_id": "648ac42475c58ca8fbe8b6e0"
+				}
+			],
+			"aboutMe": "Know it all",
+			"isTeacher": true
+		}
+	},
 
-  "GET /api/users/students/:_id": {
-    "description": "returns the student user object matching the given ID parameter",
-    "queries": [],
-    "exampleResponse": {
-      "teacher": {
-        "isPremium": false,
-        "courses": [],
-        "articles": [],
-        "reviews": []
-      },
-      "_id": "648ac42475c58ca8fbe8b6d7",
-      "userName": "BenjiSmith1990",
-      "firstName": "Ben",
-      "lastName": "Smith",
-      "email": "thisisanemailaddress@gmail.com",
-      "password": "MyPaSwOrD!",
-      "profilePicture": "https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/turtle-2815539-1280_ver_1.png",
-      "languages": [
-        {
-          "language": "English",
-          "fluency": "Fluent",
-          "_id": "648af3fb747626772368f901"
-        }
-      ],
-      "calendar": [
-        {
-          "id": 1.5995587458852127e33,
-          "text": "Graduation",
-          "start": "2023-06-13T11:30:00",
-          "end": "2023-06-13T14:30:00",
-          "_id": "648af3fb747626772368f902"
-        }
-      ],
-      "topicsToLearn": [
-        {
-          "subject": "Maths",
-          "proficiency": "Subpar",
-          "_id": "648af3fb747626772368f903"
-        }
-      ],
-      "aboutMe": "Loveable goofball",
-      "isTeacher": false
-    }
-  },
+	"GET /api/users/students/:_id": {
+		"description": "returns the student user object matching the given ID parameter",
+		"queries": [],
+		"exampleResponse": {
+			"teacher": {
+				"isPremium": false,
+				"courses": [],
+				"articles": [],
+				"reviews": []
+			},
+			"_id": "648ac42475c58ca8fbe8b6d7",
+			"userName": "BenjiSmith1990",
+			"firstName": "Ben",
+			"lastName": "Smith",
+			"email": "thisisanemailaddress@gmail.com",
+			"password": "MyPaSwOrD!",
+			"profilePicture": "https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/turtle-2815539-1280_ver_1.png",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent",
+					"_id": "648af3fb747626772368f901"
+				}
+			],
+			"calendar": [
+				{
+					"id": 1.5995587458852127e33,
+					"text": "Graduation",
+					"start": "2023-06-13T11:30:00",
+					"end": "2023-06-13T14:30:00",
+					"_id": "648af3fb747626772368f902"
+				}
+			],
+			"topicsToLearn": [
+				{
+					"subject": "Maths",
+					"proficiency": "Subpar",
+					"_id": "648af3fb747626772368f903"
+				}
+			],
+			"aboutMe": "Loveable goofball",
+			"isTeacher": false
+		}
+	},
 
-  "GET /api/users/articles": {
-    "description": "serves an array of objects for all articles",
-    "queries": [
-      {
-        "article_category": "this query allows you to find a specific article by category",
-        "example": "/api/users/articles?article_category=Quantum Physics"
-      },
-      {
-        "author": "this query allows you to find a specific article by the user who created it",
-        "example": "/api/users/articles?author=BenjiSmith1990"
-      },
-      {
-        "article_title": "this query allows you to find a specific article by title",
-        "example": "/api/users/articles?article_title=Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey"
-      },
-      {
-        "article_votes": "this query allows you to find a specific article by the number of votes it has, popular artilces acan be queried, by finding the articles with the votes greater than a given number",
-        "example": "/api/users/articles?article_votes>=10"
-      },
-      {
-        "article_date": "this query allows you to find a specific article by the date it was created by the year it was created",
-        "example": "/api/users/articles?article_date=2023"
-      },
-      {
-        "sort_by": [
-          {
-            "total_votes": "this query allows you to sort the articles by the number of votes they have, ascending and descending"
-          },
-          {
-            "date": "this query allows you to sort the articles by the date they were created, ascending and descending"
-          }
-        ]
-      }
-    ],
-    "exampleResponse": {
-      "article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
-      "article_category": "Quantum Physics",
-      "article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
-      "article_body": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
-      "created_by": "CadenGG",
-      "comments": [],
-      "_id": "648b09600ce7f912deb6c506",
-      "created_at": "2023-06-15T12:51:44.348Z",
-      "votes": [],
-      "total_votes": 0,
-      "article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
-    }
-  },
+	"GET /api/users/articles": {
+		"description": "serves an array of objects for all articles",
+		"queries": [
+			{
+				"article_category": "this query allows you to find a specific article by category",
+				"example": "/api/users/articles?article_category=Quantum Physics"
+			},
+			{
+				"author": "this query allows you to find a specific article by the user who created it",
+				"example": "/api/users/articles?author=BenjiSmith1990"
+			},
+			{
+				"article_title": "this query allows you to find a specific article by title",
+				"example": "/api/users/articles?article_title=Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey"
+			},
+			{
+				"article_votes": "this query allows you to find a specific article by the number of votes it has, popular artilces acan be queried, by finding the articles with the votes greater than a given number",
+				"example": "/api/users/articles?article_votes>=10"
+			},
+			{
+				"article_date": "this query allows you to find a specific article by the date it was created by the year it was created",
+				"example": "/api/users/articles?article_date=2023"
+			},
+			{
+				"sort_by": [
+					{
+						"total_votes": "this query allows you to sort the articles by the number of votes they have, ascending and descending"
+					},
+					{
+						"date": "this query allows you to sort the articles by the date they were created, ascending and descending"
+					}
+				]
+			}
+		],
+		"exampleResponse": {
+			"article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
+			"article_category": "Quantum Physics",
+			"article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
+			"article_body": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
+			"created_by": "CadenGG",
+			"comments": [],
+			"_id": "648b09600ce7f912deb6c506",
+			"created_at": "2023-06-15T12:51:44.348Z",
+			"votes": [],
+			"total_votes": 0,
+			"article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
+		}
+	},
 
-  "GET /api/users/articles/:_id/comments": {
-    "description": "serves an array of all comments for a given article",
-    "queries": [],
-    "exampleResponse": [
-      {
-        "votes": [],
-        "total_votes": 0,
-        "_id": "648b09600ce7f912deb6c507",
-        "created_at": "2023-06-15T12:51:44.348Z",
-        "body": "I love this article",
-        "created_by": "CadenGG"
-      },
-      {
-        "votes": [],
-        "total_votes": 0,
-        "_id": "648b09600ce7f912deb6c507",
-        "created_at": "2023-06-15T12:51:44.348Z",
-        "body": "I love this article",
-        "created_by": "CadenGG"
-      }
-    ]
-  },
+	"GET /api/users/articles/:_id/comments": {
+		"description": "serves an array of all comments for a given article",
+		"queries": [],
+		"exampleResponse": [
+			{
+				"votes": [],
+				"total_votes": 0,
+				"_id": "648b09600ce7f912deb6c507",
+				"created_at": "2023-06-15T12:51:44.348Z",
+				"body": "I love this article",
+				"created_by": "CadenGG"
+			},
+			{
+				"votes": [],
+				"total_votes": 0,
+				"_id": "648b09600ce7f912deb6c507",
+				"created_at": "2023-06-15T12:51:44.348Z",
+				"body": "I love this article",
+				"created_by": "CadenGG"
+			}
+		]
+	},
 
-  "GET /api/users/courses": {
-    "description": "serves an array of all courses objects",
-    "queries": [
-      "course=:courseCatergory",
-      "cost=:hourlyRate (putting < OR > will serve matching range)",
-      "courseRating=0-5 (putting < OR > will serve matching range)",
-      "discount=0-1(float)",
-      "sortBy=cost|courseRating|discount",
-      "order=asc|desc (defaults to desc)",
-      "courseList=true gives a list of all course categories with duplicates removed."
-    ],
-    "exampleResponse": [
-      {
-        "courseName": "survive outside",
-        "courseCategory": "cooking",
-        "hourlyRate": 10,
-        "courseImage": "https://cdn.shopify.com/s/files/1/1583/5739/files/blog-hunter_large.jpg?v=1483641733",
-        "rating": 4.7,
-        "description": "understand the basics of the domestic cat's diet",
-        "discountMultiplier": 1,
-        "_id": "648b1d6bf6067431381c97c0"
-      }
-    ]
-  },
+	"GET /api/users/courses": {
+		"description": "serves an array of all courses objects",
+		"queries": [
+			"course=:courseCatergory",
+			"cost=:hourlyRate (putting < OR > will serve matching range)",
+			"courseRating=0-5 (putting < OR > will serve matching range)",
+			"discount=0-1(float)",
+			"sortBy=cost|courseRating|discount",
+			"order=asc|desc (defaults to desc)",
+			"courseList=true gives a list of all course categories with duplicates removed."
+		],
+		"exampleResponse": [
+			{
+				"courseName": "survive outside",
+				"courseCategory": "cooking",
+				"hourlyRate": 10,
+				"courseImage": "https://cdn.shopify.com/s/files/1/1583/5739/files/blog-hunter_large.jpg?v=1483641733",
+				"rating": 4.7,
+				"description": "understand the basics of the domestic cat's diet",
+				"discountMultiplier": 1,
+				"_id": "648b1d6bf6067431381c97c0"
+			}
+		]
+	},
 
-  "GET /api/users/articles/:_id": {
-    "description": "Serves an object containing an article which matches the passed _id",
-    "queries": [],
-    "exampleResponse": {
-      "article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
-      "article_category": "Quantum Physics",
-      "article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
-      "article_body": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
-      "created_by": "CadenGG",
-      "comments": [
-        {
-          "comment_body": "Niccce",
-          "created_by": "Emmy",
-          "_id": "648c68a3123633671ddb1b3b",
-          "created_at": "2023-06-16T13:50:27.451Z",
-          "votes": []
-        }
-      ],
-      "_id": "648ac42475c58ca8fbe8b6ff",
-      "created_at": "2023-06-16T13:50:27.451Z",
-      "votes": [],
-      "article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
-    }
-  },
-  "PATCH /api/users/students/:id": {
-    "description": "Updates a student with the specified ID",
-    "sent": {
-      "notes": "the sent object must include at least one of the fields listed below, however it can include several, in any order. If fields that are not below are included there will be an error and nothing updated, otherwise all included fields will be updated. if updating a field that contains an array or object the new data must be appended to the existing array, unless the diesired result is to remove some of, or all of, the previous data.",
-      "userName": "newUser",
-      "firstName": "Davey",
-      "lastName": "Jones",
-      "email": "example@email.com",
-      "password": "examplePassword",
-      "profilePicture": "https://url.com/example-picture.jpg",
-      "languages": [
-        {
-          "language": "English",
-          "fluency": "Fluent"
-        }
-      ],
-      "aboutMe": "I am...",
-      "isTeacher": false,
-      "calendar": [],
-      "topicsToLearn": []
-    },
-    "exampleResponse": {
-      "_id": "an_ID",
-      "userName": "newUser",
-      "firstName": "Dave",
-      "lastName": "Jones",
-      "email": "example@email.com",
-      "password": "examplePassword",
-      "profilePicture": "https://url.com/example-picture.jpg",
-      "languages": [
-        {
-          "language": "English",
-          "fluency": "Fluent"
-        }
-      ],
-      "aboutMe": "I am...",
-      "isTeacher": false,
-      "teacher": {
-        "isPremium": true,
-        "courses": [],
-        "articles": [],
-        "reviews": []
-      },
-      "calendar": [],
-      "topicsToLearn": []
-    }
-  },
+	"GET /api/users/articles/:_id": {
+		"description": "Serves an object containing an article which matches the passed _id",
+		"queries": [],
+		"exampleResponse": {
+			"article_title": "Doc & Phoebe’s Indoor Hunting Feeder review by Anita Kelsey",
+			"article_category": "Quantum Physics",
+			"article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwx5GmYVcbMwo1Fr2dvRX0deJrULElW70Jw&usqp=CAU",
+			"article_body": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to be meat, being obligate carnivores and I also come from the school of thought, after continued research into dry biscuits and dental care, that a dry food diet does not clean teeth to prevent the build up of plaque in a way that would prevent dental issues (only a regular professional clean by a vet or home cleaning (good luck with that one!!!) keeps cat’s teeth in tip top condition).",
+			"created_by": "CadenGG",
+			"comments": [
+				{
+					"comment_body": "Niccce",
+					"created_by": "Emmy",
+					"_id": "648c68a3123633671ddb1b3b",
+					"created_at": "2023-06-16T13:50:27.451Z",
+					"votes": []
+				}
+			],
+			"_id": "648ac42475c58ca8fbe8b6ff",
+			"created_at": "2023-06-16T13:50:27.451Z",
+			"votes": [],
+			"article_blurb": "Initially I was a little hesitant to review the product because I advocate a cat’s natural diet to b"
+		}
+	},
+	"PATCH /api/users/students/:id": {
+		"description": "Updates a student with the specified ID",
+		"sent": {
+			"notes": "the sent object must include at least one of the fields listed below, however it can include several, in any order. If fields that are not below are included there will be an error and nothing updated, otherwise all included fields will be updated. if updating a field that contains an array or object the new data must be appended to the existing array, unless the diesired result is to remove some of, or all of, the previous data.",
+			"userName": "newUser",
+			"firstName": "Davey",
+			"lastName": "Jones",
+			"email": "example@email.com",
+			"password": "examplePassword",
+			"profilePicture": "https://url.com/example-picture.jpg",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent"
+				}
+			],
+			"aboutMe": "I am...",
+			"isTeacher": false,
+			"calendar": [],
+			"topicsToLearn": []
+		},
+		"exampleResponse": {
+			"_id": "an_ID",
+			"userName": "newUser",
+			"firstName": "Dave",
+			"lastName": "Jones",
+			"email": "example@email.com",
+			"password": "examplePassword",
+			"profilePicture": "https://url.com/example-picture.jpg",
+			"languages": [
+				{
+					"language": "English",
+					"fluency": "Fluent"
+				}
+			],
+			"aboutMe": "I am...",
+			"isTeacher": false,
+			"teacher": {
+				"isPremium": true,
+				"courses": [],
+				"articles": [],
+				"reviews": []
+			},
+			"calendar": [],
+			"topicsToLearn": []
+		}
+	},
 
-  "PATCH /api/users/teachers/:id": {
-    "description": "Updates a teacher with the specified ID",
-    "sent": {
-      "notes": "the sent object must include at least one of the fields listed below, however it can include several, in any order. If fields that are not below are included there will be an error and nothing updated, otherwise all included fields will be updated. if updating a field that contains an array or object the new data must be appended to the existing array, unless the diesired result is to remove some of, or all of, the previous data.",
-      "_id": "648b25f44d1c922f8bdf0046",
-      "userName": "coolBoy420",
-      "firstName": "Jonathan",
-      "lastName": "Bean",
-      "email": "email@email.com",
-      "password": "Password1",
-      "profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
-      "languages": [["Object"], ["Object"]],
-      "calendar": [["Object"]],
-      "topicsToLearn": [["Object"]],
-      "aboutMe": "I am a human (i think)",
-      "isTeacher": true,
-      "__v": 0,
-      "teacher": {
-        "courses": ["Array"],
-        "articles": ["Array"],
-        "rating": 1,
-        "qualifications": ["Bachelor's Degree", "Teaching Certification"],
-        "website": "www.website.com",
-        "reviews": ["Array"],
-        "isPremium": false
-      }
-    },
-    "exampleResponse": {
-      "_id": "648b25f44d1c922f8bdf0046",
-      "userName": "coolBoy420",
-      "firstName": "Jonathan",
-      "lastName": "Bean",
-      "email": "email@email.com",
-      "password": "Password1",
-      "profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
-      "languages": [["Object"], ["Object"]],
-      "calendar": [["Object"]],
-      "topicsToLearn": [["Object"]],
-      "aboutMe": "I am a human (i think)",
-      "isTeacher": true,
-      "__v": 0,
-      "teacher": {
-        "courses": ["Array"],
-        "articles": ["Array"],
-        "rating": 1,
-        "qualifications": ["Bachelor's Degree", "Teaching Certification"],
-        "website": "www.website.com",
-        "reviews": ["Array"],
-        "isPremium": false
-      }
-    }
-  },
-  "DELETE /api/users/:id": {
-    "description": "Deletes a user with the specified ID",
-    "exampleResponse": {
-      "message": "User deleted successfully"
-    }
-  },
+	"PATCH /api/users/teachers/:id": {
+		"description": "Updates a teacher with the specified ID",
+		"sent": {
+			"notes": "the sent object must include at least one of the fields listed below, however it can include several, in any order. If fields that are not below are included there will be an error and nothing updated, otherwise all included fields will be updated. if updating a field that contains an array or object the new data must be appended to the existing array, unless the diesired result is to remove some of, or all of, the previous data.",
+			"_id": "648b25f44d1c922f8bdf0046",
+			"userName": "coolBoy420",
+			"firstName": "Jonathan",
+			"lastName": "Bean",
+			"email": "email@email.com",
+			"password": "Password1",
+			"profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+			"languages": [["Object"], ["Object"]],
+			"calendar": [["Object"]],
+			"topicsToLearn": [["Object"]],
+			"aboutMe": "I am a human (i think)",
+			"isTeacher": true,
+			"__v": 0,
+			"teacher": {
+				"courses": ["Array"],
+				"articles": ["Array"],
+				"rating": 1,
+				"qualifications": ["Bachelor's Degree", "Teaching Certification"],
+				"website": "www.website.com",
+				"reviews": ["Array"],
+				"isPremium": false
+			}
+		},
+		"exampleResponse": {
+			"_id": "648b25f44d1c922f8bdf0046",
+			"userName": "coolBoy420",
+			"firstName": "Jonathan",
+			"lastName": "Bean",
+			"email": "email@email.com",
+			"password": "Password1",
+			"profilePicture": "https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/advice/maps-satellite-images/satellite-image-of-globe.jpg",
+			"languages": [["Object"], ["Object"]],
+			"calendar": [["Object"]],
+			"topicsToLearn": [["Object"]],
+			"aboutMe": "I am a human (i think)",
+			"isTeacher": true,
+			"__v": 0,
+			"teacher": {
+				"courses": ["Array"],
+				"articles": ["Array"],
+				"rating": 1,
+				"qualifications": ["Bachelor's Degree", "Teaching Certification"],
+				"website": "www.website.com",
+				"reviews": ["Array"],
+				"isPremium": false
+			}
+		}
+	},
+	"DELETE /api/users/:id": {
+		"description": "Deletes a user with the specified ID",
+		"exampleResponse": {
+			"message": "User deleted successfully"
+		}
+	},
 
-  "GET /api/courses/categories": {
-    "description": "serves an array of all course categories",
-    "exampleResponse": [
-      "cooking",
-      "lifestyle",
-      "music",
-      "art",
-      "science",
-      "maths",
-      "english",
-      "history",
-      "geography",
-      "languages",
-      "other"
-    ]
-  },
+	"GET /api/users/courses/categories": {
+		"description": "serves an array of all course categories",
+		"exampleResponse": [
+			"cooking",
+			"lifestyle",
+			"music",
+			"art",
+			"science",
+			"maths",
+			"english",
+			"history",
+			"geography",
+			"languages",
+			"other"
+		]
+	},
 
-  "PATCH /api/:article_id/comments/:comment_id ": {
-    "description": "Updates a comment with the specified ID",
-    "sent": { "comment_body": "I love this article" }
-  },
+	"PATCH /api/:article_id/comments/:comment_id ": {
+		"description": "Updates a comment with the specified ID",
+		"sent": { "comment_body": "I love this article" }
+	},
 
   "GET /api/:article_id/comments": {
     "description": "serves an array of all comments for a given article",
@@ -631,5 +631,41 @@
       "created_at": "2023-06-19T15:23:18.215Z",
       "votes": []
     }
-  }
+  },
+
+  "POST /api/:article_id/comments": {
+    "description": "Adds a comment to an article",
+    "sent": {
+      "comment_body": "I love this article",
+      "created_by": "Emmy"
+    },
+    "exampleResponse": {
+      "comment_body": "I love this article",
+      "created_by": "Emmy",
+      "total_votes": 0,
+      "_id": "649072e65ee8d195ad0abd66",
+      "created_at": "2023-06-19T15:23:18.215Z",
+      "votes": []
+    }
+  },
+
+
+	
+	"DELETE /api/users/article/:_id": {
+		"description": "Deletes an article with the specified ID"
+	},
+	"GET /api/users/courses/:course_id": {
+		"description": "returns an object containing the course data",
+		"queries": [],
+		"exampleResponse": {
+			"courseName": "advanced waffle",
+			"courseCategory": "cooking",
+			"hourlyRate": 1,
+			"courseImage": "https://media.istockphoto.com/id/185266029/photo/waffles-with-fruit-and-maple-syrup-on-a-marble-counter.jpg?s=612x612&w=0&k=20&c=YkBBzuSLisdHiECgS_NHN6gOyOMN6exADFk-RIlfKtI=",
+			"rating": 1,
+			"description": "this waffle is very tasty but it talks too much",
+			"discountMultiplier": 1,
+			"_id": "649021d2723d2de51b0cbd91"
+		}
+	}
 }
