@@ -54,10 +54,9 @@ const userSchema = new mongoose.Schema({
         },
         article_body: { type: String },
         created_by: { type: String },
-
         article_blurb: { type: String },
         created_at: { type: Date, default: Date.now },
-        created_by_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        created_by_id: { type: mongoose.Types.ObjectId, ref: "User" },
         votes: [{ vote: { type: Number }, user_id: { type: String } }],
         total_votes: { type: Number, default: 0 },
         comments: [
