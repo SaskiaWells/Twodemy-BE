@@ -88,6 +88,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre("save", function (next) {
   this.teacher.articles.forEach((article) => {
     article.created_by = this.userName;
+    article.created_by_id = this._id;
     if (!article.article_blurb) {
       article.article_blurb = article.article_body.substring(0, 100);
     }
