@@ -110,3 +110,18 @@ exports.removeArticleById = async (id) => {
     return Promise.reject({ status: 500, msg: "Failed to delete article" });
   }
 };
+
+exports.createArticle = async (id, body) => {
+  const User = connectionPool.model("User", userSchema);
+  const newArticle = await User.findOneAndUpdate(
+    { _id: id },
+    { $push: { "teacher.articles": body } },
+    { new: true, projection: { "teacher.articles.$": 1 } }
+  );
+  console.log(newArticle);
+  if (newArticle) {
+    return newArticle;
+  } else {
+    Promise.reject({ status: 404, msg: "invalid username" });
+  }
+};

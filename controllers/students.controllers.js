@@ -22,20 +22,19 @@ exports.getStudents = async (req, res, next) => {
   try {
     const students = await fetchStudents(queries);
     res.status(200).send({ students });
-  }
-  catch (err) {
+  } catch (err) {
     next(err);
   }
 };
 
 exports.postUser = async (req, res, next) => {
   const body = req.body;
-  
+
   try {
-    newStudent = await createUser(body);
+    const newStudent = await createUser(body);
     res.status(201).send({ newStudent });
   } catch (err) {
-    if(err.code === 11000) {
+    if (err.code === 11000) {
       res.status(400).send({ msg: "Username already exists" });
     } else {
       next(err);

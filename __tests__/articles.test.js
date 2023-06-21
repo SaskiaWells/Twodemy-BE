@@ -211,6 +211,33 @@ describe("/api/articles", () => {
         });
       });
   });
+  test.only("should post article", () => {
+    return request(app)
+      .post("/api/users/articles/648ac42475c58ca8fbe8b6db")
+      .expect(201)
+      .send({
+        article_title: "Article: An Article",
+        article_category: "Science!",
+        article_img:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbBfxlkgyIxT9acfseki4GxQTB3Td8e6yGyw&usqp=CAU",
+        article_body:
+          "Once upon a time there was a being called Jon, and at another point in time there wasn't. Sinister.",
+        created_by: "Jon!!!!!!!!",
+        article_blurb:
+          "This blurb is going to be longer than the article, perhaps because the article is shit,",
+      })
+      .then((response) => {
+        const { newArticle } = response.body;
+        expect(newArticle.article_title).toBe("Article: An Article");
+        expect(typeof newArticle.article_category).toBe("string");
+        expect(typeof newArticle.article_body).toBe("string");
+        expect(newArticle.created_by).toBe("Jon!!!!!!!!");
+        expect(typeof newArticle.article_blurb).toBe("string");
+        expect(newArticle.hasOwnProperty(created_at)).toBe(true);
+        expect(newArticle.hasOwnProperty(votes)).toBe(true);
+        expect(newArticle.hasOwnProperty(comments)).toBe(true);
+      });
+  });
 });
 
 describe("/api/users/articles/:_id", () => {
