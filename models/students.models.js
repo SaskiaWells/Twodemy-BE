@@ -2,9 +2,11 @@ const {
   checkFieldExists,
   buildQuery,
   validateFields,
+  hashPassword,
 } = require("../app/utils/utils");
 const connectionPool = require("../db/connection");
 const userSchema = require("../db/seedData/schemas/userSchema");
+const bcrypt = require("bcrypt");
 
 exports.fetchStudents = async (queries) => {
   let query = {
@@ -20,10 +22,11 @@ exports.fetchStudents = async (queries) => {
 };
 
 exports.createUser = async (student) => {
-	const User = connectionPool.model("User", userSchema);
-	const newStudent = new User(student);
-	await newStudent.save();
-	return newStudent;
+  student.password = hashPassword(student.password);
+  const User = connectionPool.model("User", userSchema);
+  const newStudent = new User(student);
+  await newStudent.save();
+  return newStudent;
 };
 
 exports.fetchStudentById = async (params) => {

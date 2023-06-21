@@ -9,7 +9,7 @@ beforeEach(() => seed(testData));
 afterAll(() => connection.close());
 
 describe("/api/articles/:_id/comments", () => {
-  test.only("GET Status 200 - returns an array of all comments for specific article", () => {
+  test("GET Status 200 - returns an array of all comments for specific article", () => {
     return request(app)
       .get("/api/users/articles/5f760b7a9b3d9b0b1c9b4b1e/comments")
       .expect(200)

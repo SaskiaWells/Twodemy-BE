@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 const connectionPool = require("../../db/connection");
 
 exports.checkFieldExists = async (modelName, query) => {
@@ -150,4 +152,18 @@ exports.validateComment = (req, res, next) => {
     });
   }
   next();
+};
+
+exports.hashPasswords = (arr) => {
+  const saltRounds = 10;
+
+  const hashedarr = arr.map((user) => {
+    const hashedPassword = bcrypt.hashSync(user.password, saltRounds);
+    return { ...user, password: hashedPassword };
+  });
+};
+
+exports.hashPassword = (password) => {
+  const saltRounds = 10;
+  return bcrypt.hashSync(password, saltRounds);
 };
