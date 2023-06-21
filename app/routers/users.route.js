@@ -1,5 +1,9 @@
 const usersRouter = require("express").Router();
-const { getUsers, deleteUser } = require("../../controllers/users.controllers");
+const {
+  getUsers,
+  deleteUser,
+  validateUsername,
+} = require("../../controllers/users.controllers");
 const coursesRouter = require("./courses.route");
 const articleRouter = require("./articles.route");
 const studentsRouter = require("./students.route");
@@ -13,5 +17,6 @@ usersRouter.use("/students", studentsRouter);
 usersRouter.use("/teachers", teachersRouter);
 usersRouter.use("/courses", coursesRouter);
 usersRouter.use("/articles", articleRouter);
+usersRouter.post("/authentication", validateUsername);
 
 module.exports = usersRouter;
