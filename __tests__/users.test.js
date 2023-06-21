@@ -4,6 +4,8 @@ const connection = require("../db/connection.js");
 const seed = require("../db/seeds/seed.js");
 const testData = require("../db/seedData/testData/users.js");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const { hashPassword } = require("../app/utils/utils.js");
 
 beforeEach(() => seed(testData));
 
@@ -53,7 +55,6 @@ describe("/api/users", () => {
         expect(newStudent.firstName).toBe("Karlie");
         expect(newStudent.lastName).toBe("Guan");
         expect(newStudent.email).toBe("noobiefion@gmail.com");
-        expect(newStudent.password).toBe("iamnotNoobie!");
         expect(newStudent.profilePicture).toBe(
           "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr"
         );
@@ -85,7 +86,9 @@ describe("/api/users", () => {
       })
       .then((response) => {
         const body = response.body;
-        expect(body).toEqual({ msg: "Missing required field(s): userName" });
+        expect(body).toEqual({
+          msg: "Missing required field(s): userName",
+        });
       });
   });
   test("POST - status: 404 - return err msg when missing multiple reqired field", () => {
@@ -179,7 +182,6 @@ describe("/api/users", () => {
         expect(newStudent.firstName).toBe("Karlie");
         expect(newStudent.lastName).toBe("Guan");
         expect(newStudent.email).toBe("hello@gmail.com");
-        expect(newStudent.password).toBe("iamnotNoobie!");
         expect(newStudent.profilePicture).toBe(
           "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr"
         );
@@ -219,7 +221,6 @@ describe("/api/users", () => {
         expect(newStudent.firstName).toBe("Karlie");
         expect(newStudent.lastName).toBe("Guan");
         expect(newStudent.email).toBe("hello@gmail.com");
-        expect(newStudent.password).toBe("iamnotNoobie!");
         expect(newStudent.profilePicture).toBe(
           "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr"
         );
@@ -231,6 +232,35 @@ describe("/api/users", () => {
         expect(typeof newStudent._id).toBe("string");
       });
   });
+
+  test("POST will hash password before uploading to database", async () => {
+    const response = await request(app)
+      .post("/api/users")
+      .expect(201)
+      .send({
+        userName: "Fion666",
+        firstName: "Karlie",
+        lastName: "Guan",
+        password: "Password",
+        email: "hello@gmail.com",
+        profilePicture:
+          "https://play-lh.googleusercontent.com/sIc-NGgfwtgvs-wow-oCFkXItNs7T_lEhprMjcAMNqRP8Ej2FFet2pCowXLMNexDOvXr",
+        languages: [
+          {
+            language: "English",
+            fluency: "Fluent",
+          },
+        ],
+        topicsToLearn: [{ subject: "Maths", proficiency: "Prodigy" }],
+      });
+
+    const { newStudent } = response.body;
+    const password = "Password";
+    const passwordMatch = await bcrypt.compare(password, newStudent.password);
+    expect(passwordMatch).toBe(true);
+    expect(newStudent.password === "Password").toBe(false);
+  });
+
   test("should delete student", async () => {
     await request(app)
       .delete("/api/users/648ac42475c58ca8fbe8b6d7")
