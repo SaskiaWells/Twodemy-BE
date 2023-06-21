@@ -116,9 +116,9 @@ exports.createArticle = async (id, body) => {
   const newArticle = await User.findOneAndUpdate(
     { _id: id },
     { $push: { "teacher.articles": body } },
-    { new: true, projection: { "teacher.articles.$": 1 } }
+    { new: true }
   );
-  console.log(newArticle);
+  console.log(newArticle.teacher.articles, "model");
   if (newArticle) {
     return newArticle;
   } else {
