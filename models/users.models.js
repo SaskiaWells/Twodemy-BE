@@ -36,10 +36,9 @@ exports.authenticateUser = async (body) => {
     return Promise.reject({ status: 404, msg: "Username Not Found." });
   }
   const passwordMatch = await bcrypt.compare(password, userToValidate.password);
-  console.log(passwordMatch);
+
   if (!passwordMatch) {
     return Promise.reject({ status: 400, msg: "Password incorrect" });
   }
-
   return userToValidate;
 };
