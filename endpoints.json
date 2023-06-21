@@ -743,5 +743,29 @@
         ]
       }
     }
+  },
+  "POST /api/users/articles/648ac42475c58ca8fbe8b6db": {
+    "description": "allows a teacher to post a comment",
+    "examplePostBody": {
+      "article_title": "Article: An Article",
+      "article_category": "Science!",
+      "article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbBfxlkgyIxT9acfseki4GxQTB3Td8e6yGyw&usqp=CAU",
+      "article_body": "Once upon a time there was a being called Jon, and at another point in time there wasn't. Sinister.",
+      "created_by": "Jon!!!!!!!!",
+      "article_blurb": "This blurb is going to be longer than the article, perhaps because the article is shit,"
+    },
+    "exampleResponse": {
+      "article_title": "Article: An Article",
+      "article_category": "Science!",
+      "article_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbBfxlkgyIxT9acfseki4GxQTB3Td8e6yGyw&usqp=CAU",
+      "article_body": "Once upon a time there was a being called Jon, and at another point in time there wasn't. Sinister.",
+      "created_by": "Jon!!!!!!!!",
+      "article_blurb": "This blurb is going to be longer than the article, perhaps because the article is shit,",
+      "total_votes": 0,
+      "_id": "64931c309a1849f1b62b349e",
+      "created_at": "2023-06-21T15:50:08.552Z",
+      "votes": [],
+      "comments": []
+    }
   }
 }
