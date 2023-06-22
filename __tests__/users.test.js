@@ -749,6 +749,46 @@ describe("/api/users/teachers/:_id", () => {
       });
   });
 
+  test("PATCH should update languages for teacher", () => {
+    return request(app)
+      .patch("/api/users/teachers/648ac42475c58ca8fbe8b6db")
+      .expect(200)
+      .send({
+        isPremium: false,
+        languages: [{ language: "Morse Code", fluency: "Native" }],
+      })
+      .then((response) => {
+        const { updatedTeacher } = response.body;
+        expect(updatedTeacher.languages).toEqual([
+          {
+            language: "Morse Code",
+            fluency: "Native",
+            _id: expect.any(String),
+          },
+        ]);
+      });
+  });
+
+  test.only("PATCH should update languages for student", () => {
+    return request(app)
+      .patch("/api/users/students/648ac42475c58ca8fbe8b6db")
+      .expect(200)
+      .send({
+        isPremium: false,
+        languages: [{ language: "Morse Code", fluency: "Native" }],
+      })
+      .then((response) => {
+        const { updatedStudent } = response.body;
+        expect(updatedStudent.languages).toEqual([
+          {
+            language: "Morse Code",
+            fluency: "Native",
+            _id: expect.any(String),
+          },
+        ]);
+      });
+  });
+
   test("PATCH should reject if given fields that are not on whitelist", () => {
     return request(app)
       .patch("/api/users/teachers/648ac42475c58ca8fbe8b6db")

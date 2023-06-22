@@ -125,6 +125,7 @@ exports.buildPatchTeacherQuery = (fields) => {
     courses: "teacher.courses",
     articles: "teacher.articles",
     reviews: "teachersRouter.reviews",
+    languages: "languages",
   };
   const newFields = {};
 
