@@ -293,7 +293,6 @@ describe("/api/users/articles/:_id", () => {
       })
       .then((response) => {
         const { newArticle } = response.body;
-        console.log(newArticle);
         expect(newArticle.article_title).toBe("Article: An Article");
         expect(typeof newArticle.article_category).toBe("string");
         expect(typeof newArticle.article_body).toBe("string");

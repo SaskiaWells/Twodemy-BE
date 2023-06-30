@@ -118,14 +118,11 @@ exports.createArticle = async (id, body) => {
     { $push: { "teacher.articles": body } },
     { new: true }
   );
-  console.log(newArticle.teacher.articles, "model");
 
   const foundArticle = await User.findOne(
     { _id: id, "teacher.articles.article_title": body.article_title },
     { "teacher.articles.$": 1 }
   );
-
-  console.log(foundArticle.teacher.articles[0], "found????");
 
   if (newArticle) {
     return foundArticle.teacher.articles[0];

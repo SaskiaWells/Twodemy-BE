@@ -47,6 +47,5 @@ exports.patchStudent = async (newFields, id) => {
   const updatedStudent = await User.findByIdAndUpdate(id, newFields, {
     new: true,
   });
-  console.log(updatedStudent.languages);
   return updatedStudent;
 };
