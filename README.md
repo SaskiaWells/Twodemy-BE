@@ -9,4 +9,4 @@ The data was created with mongodb and the API was created with mongoose and java
 
 Here is the link to our API: https://e-learning-platform-2c3s.onrender.com/api/
 
-Here is the link to our full stac web application: https://twodemy.netlify.app/
+Here is the link to our full stack web application: https://twodemy.netlify.app/
